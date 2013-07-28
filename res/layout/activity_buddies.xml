@@ -148,7 +148,7 @@
             android:text="Online" />
 
         <ListView
-            android:id="@+id/listOnlineFriends"
+            android:id="@+id/listOnlineBuddies"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:listitem="@android:layout/simple_list_item_1" >
@@ -161,7 +161,7 @@
             android:text="Offline" />
 
         <ListView
-            android:id="@+id/listOfflineFriends"
+            android:id="@+id/listOfflineBuddies"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:listitem="@android:layout/simple_list_item_1" >
