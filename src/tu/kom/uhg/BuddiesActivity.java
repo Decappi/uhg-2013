@@ -39,7 +39,7 @@ public class BuddiesActivity extends GenericActivity{
 	    		android.R.layout.simple_list_item_1,
 	    		buddies);
 	    
-	    offlineList = (ListView)findViewById(R.id.listOfflineFriends);
+	    offlineList = (ListView)findViewById(R.id.listOfflineBuddies);
 	    offlineList.setAdapter(adapterOffline);
 	  
 	    
@@ -53,7 +53,7 @@ public class BuddiesActivity extends GenericActivity{
 	}
 	
 	public void addBuddy(View v){
-		
+		Toast.makeText(this, "addBuddy Clicked", Toast.LENGTH_LONG).show();
 	}
 
 }
