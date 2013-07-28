@@ -72,7 +72,7 @@ public class BuddiesActivity extends GenericActivity {
 		
 		ArrayAdapter<String> adapterOffline = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, buddies);
-		//adapterOffline.add(newBuddyName);
+		//adapterOffline.add("test name");
 		offlineList.setAdapter(adapterOffline);
 	}
 
