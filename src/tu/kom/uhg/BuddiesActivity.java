@@ -53,7 +53,7 @@ public class BuddiesActivity extends GenericActivity{
 	}
 	
 	public void addBuddy(View v){
-		Toast.makeText(this, "addBuddy Clicked", Toast.LENGTH_LONG).show();
+		Toast.makeText(this, "addBuddy Clicked", Toast.LENGTH_LONG).show();	
 	}
 
 }

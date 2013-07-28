@@ -132,20 +132,39 @@
         android:layout_marginTop="100dp"
         android:orientation="vertical" >
 
-        <Button
-            android:id="@+id/button1"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right|center"
-            android:onClick="addBuddy"
-            android:text="Add Buddy" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <EditText
+                android:id="@+id/txt_newBuddy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="2"
+                android:inputType="textPersonName" />
+
+            <Button
+                android:id="@+id/btn_addBuddy"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.16"
+                android:onClick="addBuddy"
+                android:text="Add Buddy" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Online" />
+       
+		<View
+		    android:layout_width="fill_parent"
+		    android:layout_height="1dip"
+		    android:layout_marginRight="20dp"
+		    android:background="#000000" />
 
         <ListView
             android:id="@+id/listOnlineBuddies"
@@ -159,6 +178,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Offline" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:layout_marginRight="20dp"
+            android:background="#000000" />
 
         <ListView
             android:id="@+id/listOfflineBuddies"
