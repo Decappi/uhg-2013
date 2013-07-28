@@ -54,6 +54,7 @@ public class BuddiesActivity extends GenericActivity{
 	
 	public void addBuddy(View v){
 		
+		
 	}
 
 }
