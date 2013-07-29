@@ -26,12 +26,9 @@ public class GenericActivity extends FragmentActivity {
     }
 
     public void mapView(View v) {
-        if (!this.getLocalClassName().equals("MainActivity")){
             //call the login class
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, MapActivity.class);
             startActivity(intent);
-            finish();
-        }
     }
 
     public void settingsView(View v) {
