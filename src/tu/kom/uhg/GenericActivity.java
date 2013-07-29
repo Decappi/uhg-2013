@@ -41,9 +41,10 @@ public class GenericActivity extends FragmentActivity {
             Intent intent = new Intent(this, SettingsActivity.class);
             intent.putExtra(NICKNAME, UserNickname);
             startActivity(intent);
-        } else if (!this.getLocalClassName().equals("MainActivity") &&
-    		!this.getLocalClassName().equals("MapActivity")){
-        	finish();
+	        if (!this.getLocalClassName().equals("MainActivity") &&
+	    		!this.getLocalClassName().equals("MapActivity")){
+	        	finish();
+	        }
         }
     }
 
@@ -52,9 +53,10 @@ public class GenericActivity extends FragmentActivity {
             //call the login class
             Intent intent = new Intent(this, GamesActivity.class);
             startActivity(intent);
-        } else if (!this.getLocalClassName().equals("MainActivity") &&
-    		!this.getLocalClassName().equals("MapActivity")){
-        	finish();
+	        if (!this.getLocalClassName().equals("MainActivity") &&
+	    		!this.getLocalClassName().equals("MapActivity")){
+	        	finish();
+	        }
         }
     }
 
@@ -63,9 +65,10 @@ public class GenericActivity extends FragmentActivity {
             //call the login class
             Intent intent = new Intent(this, BuddiesActivity.class);
             startActivity(intent);
-        } else if (!this.getLocalClassName().equals("MainActivity") &&
-    		!this.getLocalClassName().equals("MapActivity")){
-        	finish();
+	        if (!this.getLocalClassName().equals("MainActivity") &&
+	    		!this.getLocalClassName().equals("MapActivity")){
+	        	finish();
+	        }
         }
     }
 
@@ -74,9 +77,10 @@ public class GenericActivity extends FragmentActivity {
             //call the login class
             Intent intent = new Intent(this, ScoresActivity.class);
             startActivity(intent);
-        } else if (!this.getLocalClassName().equals("MainActivity") &&
-    		!this.getLocalClassName().equals("MapActivity")){
-        	finish();
+            if (!this.getLocalClassName().equals("MainActivity") &&
+	    		!this.getLocalClassName().equals("MapActivity")){
+	        	finish();
+            }
         }
     }
 
@@ -85,9 +89,10 @@ public class GenericActivity extends FragmentActivity {
             //call the login class
             Intent intent = new Intent(this, MeActivity.class);
             startActivity(intent);           
-        } else if (!this.getLocalClassName().equals("MainActivity") &&
-    		!this.getLocalClassName().equals("MapActivity")){	
-        	finish();
+            if (!this.getLocalClassName().equals("MainActivity") &&
+	    		!this.getLocalClassName().equals("MapActivity")){	
+	        	finish();
+            }
         }
     }
 }
