@@ -34,6 +34,7 @@ public class MapActivity extends GenericActivity implements android.location.Loc
 	    Criteria criteria = new Criteria();
 	    provider = locationManager.getBestProvider(criteria, false);
 	    Location location = locationManager.getLastKnownLocation(provider);
+	    locationManager.requestLocationUpdates(provider, 400, 1, this);
 	    if (location != null) {
 	        System.out.println("Provider " + provider + " has been selected.");
 	        onLocationChanged(location);
