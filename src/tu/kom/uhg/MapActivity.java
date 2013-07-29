@@ -26,10 +26,7 @@ public class MapActivity extends GenericActivity implements android.location.Loc
 		Toast.makeText(this, "map activity loaded", Toast.LENGTH_LONG).show();
 		
 		map = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map)).getMap();
-		//map.setMyLocationEnabled(true);
-		
-		
-
+		map.setMyLocationEnabled(true);
 		
 		// Get the location manager
 	    locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -66,12 +63,12 @@ public class MapActivity extends GenericActivity implements android.location.Loc
 	
 	@Override
 	public void onLocationChanged(Location location) {
-	  // TODO Auto-generated method stub
 		double lat = location.getLatitude();
 		double lon = location.getLongitude();
 		LatLng target = new LatLng(lat, lon);
 		
 		map.animateCamera(CameraUpdateFactory.newLatLng(target));
+		//TODO change the default my location marker
 	}
 
 	@Override
