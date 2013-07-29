@@ -5,18 +5,17 @@
     android:layout_height="match_parent"
     tools:context=".SettingsActivity" >
     
-
     <ImageButton
-            android:layout_width="130dp"
-            android:layout_height="80dp"
-            android:id="@+id/btn_me"
-            android:onClick="meView"
-            android:layout_gravity="left|top"
-            android:layout_alignParentEnd="false"
-            android:layout_alignParentTop="true"
-            android:cropToPadding="false"
-            android:background="@drawable/single_01_me_down"
-            android:layout_alignParentLeft="true"/>
+        android:id="@+id/btn_me"
+        android:layout_width="130dp"
+        android:layout_height="80dp"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="left|top"
+        android:background="@drawable/single_01_me_up"
+        android:cropToPadding="false"
+        android:onClick="meView" />
 
     <ImageButton
             android:layout_width="130dp"
@@ -109,16 +108,17 @@
                 android:layout_alignParentBottom="true"/>
 
         <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/btn_settings" android:background="@drawable/single_06_settings_up"
-                android:onClick="settingsView"
-                android:layout_alignParentStart="false"
-                android:layout_gravity="bottom|right"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
-                android:adjustViewBounds="false"
-                android:layout_toRightOf="@+id/btn_fake_b_s"/>
+            android:id="@+id/btn_settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentStart="false"
+            android:layout_gravity="bottom|right"
+            android:layout_toRightOf="@+id/btn_fake_b_s"
+            android:adjustViewBounds="false"
+            android:background="@drawable/single_06_settings_down"
+            android:onClick="settingsView" />
 
     </RelativeLayout>
 </RelativeLayout>
