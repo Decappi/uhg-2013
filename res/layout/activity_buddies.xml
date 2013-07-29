@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -201,7 +198,6 @@
 
 </RelativeLayout>
 =======
->>>>>>> 027a616b97fd424e923147c305e8532764f50934
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -401,7 +397,3 @@
     </RelativeLayout>
 
 </RelativeLayout>
-<<<<<<< HEAD
-=======
->>>>>>> b3f8d714200c0c46b94d6d8ee740715123b762c1
->>>>>>> 027a616b97fd424e923147c305e8532764f50934
