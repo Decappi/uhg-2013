@@ -19,7 +19,6 @@ public class MeActivity extends GenericActivity{
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 	    setContentView(R.layout.activity_me);
-	    Toast.makeText(this, "me activity loaded", Toast.LENGTH_LONG).show();
 	    SharedPreferences prefs = getSharedPreferences("user", MODE_PRIVATE);
 	
 	    //Set the data for the text on the left of avatar
@@ -28,7 +27,10 @@ public class MeActivity extends GenericActivity{
 	    Integer userHeight = prefs.getInt("user_height", 175);
 	    Integer userWeight = prefs.getInt("user_weight", 70);
 	    
-	    Integer userBMI = (userWeight*10000/(userHeight*userHeight));
+	    Integer userBMI = 0;
+	    
+	    if (userHeight != 0)
+	    	userBMI = (userWeight*10000/(userHeight*userHeight));
 	    
         final List<String[]> list = new LinkedList<String[]>();
         list.add(new String[]{userSex, "Geschlecht"});
@@ -80,23 +82,44 @@ public class MeActivity extends GenericActivity{
 		EditText weightET = (EditText)findViewById(R.id.editWeight);
 		//temp vars for the entered values
 		String newSex = sexET.getText().toString();
-		Integer newAge = Integer.parseInt(ageET.getText().toString());
-		Integer newHeight = Integer.parseInt(heightET.getText().toString());
-		Integer newWeight = Integer.parseInt(weightET.getText().toString());
-		//save values to the preferences
+		sexET.setText("");
 		SharedPreferences prefs = getSharedPreferences("user", MODE_PRIVATE);
+		
+		Integer newAge;
+		Integer newHeight;
+		Integer newWeight;
+		
+		if (!ageET.getText().toString().equals("")){
+			newAge = Integer.parseInt(ageET.getText().toString());
+			ageET.setText("");
+		} else
+			newAge = prefs.getInt("user_age", 25);
+		
+		if (!heightET.getText().toString().equals("")) {
+			newHeight = Integer.parseInt(heightET.getText().toString());
+			heightET.setText("");
+		} else
+			newHeight = prefs.getInt("user_height", 175);
+		
+		if (!weightET.getText().toString().equals("")) {
+			newWeight = Integer.parseInt(weightET.getText().toString());
+			weightET.setText("");
+		} else
+			newWeight = prefs.getInt("user_weight", 70);
+		
+		//save values to the preferences
 		SharedPreferences.Editor editor = prefs.edit();
 	    editor.putString("user_sex", newSex);
 	    editor.putInt("user_age", newAge);
 	    editor.putInt("user_height", newHeight);
 	    editor.putInt("user_weight", newWeight);
 	    editor.commit();
+	    
 		//TODO set updated values to View
-	    Integer newBMI;
+	    Integer newBMI = 0;
 	    if (newHeight != 0)
 	    	newBMI = (newWeight*10000/(newHeight*newHeight));
-	    else
-	    	newBMI = 0;
+	    
 	    final List<String[]> list = new LinkedList<String[]>();
         list.add(new String[]{newSex, "Geschlecht"});
         list.add(new String[]{newAge.toString(), "Alter"});

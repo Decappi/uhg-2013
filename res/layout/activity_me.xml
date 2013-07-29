@@ -215,15 +215,18 @@
                 android:layout_height="200dp"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="Geschlecht"/>
+                android:hint="Geschlecht"
+                android:inputType="text" />
 
           	<EditText
-                android:id="@+id/editAge"
-                android:layout_width="wrap_content"
-                android:layout_height="200dp"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="Alter">
+          	    android:id="@+id/editAge"
+          	    android:layout_width="wrap_content"
+          	    android:layout_height="200dp"
+          	    android:layout_weight="1"
+          	    android:ems="10"
+          	    android:hint="Alter"
+          	    android:inputType="number" >
+
             </EditText>
 
             <EditText
@@ -232,7 +235,8 @@
                 android:layout_height="200dp"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="Groesse"/>
+                android:hint="Groesse"
+                android:inputType="number" />
 
             <EditText
                 android:id="@+id/editWeight"
@@ -240,7 +244,9 @@
                 android:layout_height="200dp"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="Gewicht"/>
+                android:hint="Gewicht"
+                android:inputType="number" />
+
         </LinearLayout>
 
     </LinearLayout>
