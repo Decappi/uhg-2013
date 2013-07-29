@@ -173,7 +173,7 @@
             android:layout_gravity="center|bottom"
             android:adjustViewBounds="false"
             android:background="@drawable/single_05_buddys_down"
-            android:onClick="gamesView" />
+            android:onClick="buddiesView" />
 
         <ImageView
             android:id="@+id/btn_fake_b_s"
