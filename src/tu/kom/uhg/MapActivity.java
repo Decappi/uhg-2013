@@ -68,7 +68,6 @@ public class MapActivity extends GenericActivity implements android.location.Loc
 		LatLng target = new LatLng(lat, lon);
 		
 		map.animateCamera(CameraUpdateFactory.newLatLng(target));
-		//TODO change the default my location marker
 	}
 
 	@Override
