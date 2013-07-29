@@ -1,138 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:orientation="vertical"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/fake_score"
-                android:layout_alignParentBottom="true"
-        >
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:orientation="vertical" >
 
-    <ListView
-        android:id="@+id/listView1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/relativeLayout"
+    <ImageButton
+        android:id="@+id/btn_me"
+        android:layout_width="130dp"
+        android:layout_height="80dp"
         android:layout_alignParentEnd="false"
-        android:layout_alignParentStart="false"
-        android:layout_below="@+id/btn_me" >
-
-    </ListView>
-
-    <ImageButton
-            android:layout_width="130dp"
-            android:layout_height="80dp"
-            android:id="@+id/btn_me"
-            android:onClick="meView"
-            android:layout_gravity="left|top"
-            android:layout_alignParentEnd="false"
-            android:layout_alignParentTop="true"
-            android:cropToPadding="false"
-            android:background="@drawable/single_01_me_up"
-            android:layout_alignParentLeft="true"/>
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="left|top"
+        android:background="@drawable/single_01_me_up"
+        android:cropToPadding="false"
+        android:onClick="meView" />
 
     <ImageButton
-            android:layout_width="130dp"
-            android:layout_height="80dp"
-            android:id="@+id/btn_score"
-            android:onClick="scoresView"
-            android:layout_gravity="right|top"
-            android:layout_alignParentTop="true"
-            android:background="@drawable/single_02_scores_down"
-            android:layout_alignParentRight="true"/>
+        android:id="@+id/btn_score"
+        android:layout_width="130dp"
+        android:layout_height="80dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="right|top"
+        android:background="@drawable/single_02_scores_down"
+        android:onClick="scoresView" />
 
     <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="80dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:id="@+id/relativeLayout"
-            android:layout_toLeftOf="@+id/btn_fake"
-            >
+        android:id="@+id/relativeLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/btn_fake" >
 
         <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/btn_map" android:background="@drawable/single_03_map_up"
-                android:onClick="mapView"
-                android:layout_alignParentEnd="false"
-                android:layout_alignParentStart="false"
-                android:layout_gravity="bottom|left"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
-                android:adjustViewBounds="false"
-                android:layout_toLeftOf="@+id/btn_fake_m_g"/>
+            android:id="@+id/btn_map"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="false"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="false"
+            android:layout_gravity="bottom|left"
+            android:layout_toLeftOf="@+id/btn_fake_m_g"
+            android:adjustViewBounds="false"
+            android:background="@drawable/single_03_map_up"
+            android:onClick="mapView" />
 
         <ImageView
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:id="@+id/btn_fake_m_g"
-                android:layout_alignParentBottom="true"
-                android:layout_alignWithParentIfMissing="false"
-                android:layout_alignParentEnd="false"
-                android:layout_alignParentStart="false"
-                android:layout_alignParentLeft="false"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentRight="false"/>
-
-        <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/btn_games" android:background="@drawable/single_04_games_up"
-                android:onClick="gamesView"
-                android:layout_alignParentStart="false"
-                android:layout_gravity="center_horizontal|bottom"
-                android:adjustViewBounds="false"
-                android:layout_alignParentBottom="true"
-                android:layout_toRightOf="@+id/btn_fake_m_g"/>
-
-    </RelativeLayout>
-
-    <ImageButton
+            android:id="@+id/btn_fake_m_g"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:id="@+id/btn_fake"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true"/>
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="false"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentRight="false"
+            android:layout_alignParentStart="false"
+            android:layout_alignWithParentIfMissing="false"
+            android:layout_centerHorizontal="true" />
+
+        <ImageButton
+            android:id="@+id/btn_games"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="false"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_toRightOf="@+id/btn_fake_m_g"
+            android:adjustViewBounds="false"
+            android:background="@drawable/single_04_games_up"
+            android:onClick="gamesView" />
+    </RelativeLayout>
+
+    <ImageButton
+        android:id="@+id/btn_fake"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
     <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="80dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_toRightOf="@+id/btn_fake">
+        android:id="@+id/relativeLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/btn_fake" >
 
         <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/btn_buddies" android:background="@drawable/single_05_buddys_up"
-                android:onClick="buddiesView"
-                android:layout_alignParentStart="false"
-                android:layout_gravity="center|bottom"
-                android:layout_alignParentBottom="true"
-                android:adjustViewBounds="false"
-                android:layout_alignParentRight="false"
-                android:layout_alignRight="@+id/btn_fake_b_s"/>
+            android:id="@+id/btn_buddies"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="false"
+            android:layout_alignParentStart="false"
+            android:layout_alignRight="@+id/btn_fake_b_s"
+            android:layout_gravity="center|bottom"
+            android:adjustViewBounds="false"
+            android:background="@drawable/single_05_buddys_up"
+            android:onClick="buddiesView" />
 
         <ImageView
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:id="@+id/btn_fake_b_s"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"/>
+            android:id="@+id/btn_fake_b_s"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
 
         <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/btn_settings" android:background="@drawable/single_06_settings_up"
-                android:onClick="settingsView"
-                android:layout_alignParentStart="false"
-                android:layout_gravity="bottom|right"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
-                android:adjustViewBounds="false"
-                android:layout_toRightOf="@+id/btn_fake_b_s"/>
-
+            android:id="@+id/btn_settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentStart="false"
+            android:layout_gravity="bottom|right"
+            android:layout_toRightOf="@+id/btn_fake_b_s"
+            android:adjustViewBounds="false"
+            android:background="@drawable/single_06_settings_up"
+            android:onClick="settingsView" />
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_me"
+        android:text="Game" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/relativeLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView1" >
+
+        <ListView
+            android:id="@+id/list_gameNames"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+        </ListView>
+
+        <ListView
+            android:id="@+id/list_highScores"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="false"
+            android:layout_alignParentStart="false"
+            android:layout_weight="1" >
+        </ListView>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/relativeLayout1"
+        android:layout_below="@+id/btn_score"
+        android:text="Highscore" />
 
 </RelativeLayout>

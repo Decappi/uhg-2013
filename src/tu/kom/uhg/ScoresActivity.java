@@ -3,7 +3,17 @@ package tu.kom.uhg;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
-
+import java.util.HashMap;
+ 
+import android.app.Activity;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,8 +22,8 @@ import android.widget.Toast;
 
 public class ScoresActivity extends GenericActivity {
 
-	ListView gamesList;
-	String[] defaultGamesList = { "Gate Run", "Ping Pong", "Frisbee" };
+	ListView highScoresList;
+	ListView gameNamesList;
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -23,8 +33,8 @@ public class ScoresActivity extends GenericActivity {
 		//read the prefs
 		SharedPreferences prefs = getSharedPreferences("scores", MODE_PRIVATE);
 		String scoresStr = prefs.getString("scores", null);
+		Score scores = new Score();
 		if (scoresStr == null){//no data was found, fill the array with default data
-			Score scores = new Score();
 			scores.addGame("Gate Run")
 			.addGame("Ping Pong")
 			.addGame("Frisbee")
@@ -39,10 +49,25 @@ public class ScoresActivity extends GenericActivity {
 			.append("Frisbee", 		"30.07.13", 100);
 		}
 		
+		String[] scoreNamesList = new String[scores.gameNames.size()];
+		String[] scoreValuesList = new String[scores.gameNames.size()];
+		for(int i = 0; i < scores.gameNames.size(); i++) {
+			scoreNamesList[i] = scores.gameNames.get(i);
+			scoreValuesList[i] = scores.games.get(i).getTotalScore().toString();
+		}
 		
+		ArrayAdapter<String> adapterGameNames = new ArrayAdapter<String>(this,
+				android.R.layout.simple_list_item_1, scoreNamesList);
+		ArrayAdapter<String> adapterHighScores = new ArrayAdapter<String>(this,
+				android.R.layout.simple_list_item_1, scoreValuesList);
 		
-		Toast.makeText(this, "Scores loaded", Toast.LENGTH_LONG)
-		.show();
+
+		gameNamesList = (ListView)findViewById(R.id.list_gameNames);
+		gameNamesList.setAdapter(adapterGameNames);
+		
+		highScoresList = (ListView)findViewById(R.id.list_highScores);
+		highScoresList.setAdapter(adapterHighScores);
+	
 	}
 
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -64,9 +89,13 @@ public class ScoresActivity extends GenericActivity {
 		
 		public Score append (String gameName, String date, Integer score){
 			Integer gameNumber = gameNames.indexOf(gameName);
+			/*
 			Game game = games.get(gameNumber);
 			game.addScore(date, score);
 			games.add(gameNumber, game);
+			*/
+			games.get(gameNumber).addScore(date, score);
+
 			return this;
 		}
 		
@@ -78,6 +107,16 @@ public class ScoresActivity extends GenericActivity {
 				dates.add(newDate);
 				scores.add(newScore);
 			}
+			 public Integer getTotalScore () {
+				 Integer result = 0;
+				 if(scores.size() > 0) {
+					 for(int i = 0; i < scores.size(); i++) {
+						 result += scores.get(i);
+					 }
+				 }				 
+				 return result;
+			 }
 		}
 	}
+
 }
