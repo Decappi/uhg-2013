@@ -16,13 +16,16 @@ public class MainActivity extends GenericActivity {
 	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		scoresView(getCurrentFocus());
+		finish();
 		setContentView(R.layout.activity_main);
 		
 		map = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map)).getMap();
 		map.setMyLocationEnabled(true);		
 		
 		
-		Toast.makeText(this, "main activity loaded", Toast.LENGTH_LONG).show();
+		Toast.makeText(this, "main activity loaded", Toast.LENGTH_SHORT).show();
+		
 	}
 
 	public boolean onCreateOptionsMenu(Menu menu) {

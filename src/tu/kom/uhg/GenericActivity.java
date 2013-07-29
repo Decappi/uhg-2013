@@ -30,6 +30,7 @@ public class GenericActivity extends FragmentActivity {
             //call the login class
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
+            finish();
         }
     }
 
@@ -40,6 +41,9 @@ public class GenericActivity extends FragmentActivity {
             intent.putExtra(NICKNAME, UserNickname);
             startActivity(intent);
         }
+        if (!this.getLocalClassName().equals("MainActivity")){
+        	finish();
+        }
     }
 
     public void gamesView(View v) {
@@ -47,6 +51,9 @@ public class GenericActivity extends FragmentActivity {
             //call the login class
             Intent intent = new Intent(this, GamesActivity.class);
             startActivity(intent);
+        }
+        if (!this.getLocalClassName().equals("MainActivity")){
+        	finish();
         }
     }
 
@@ -56,6 +63,9 @@ public class GenericActivity extends FragmentActivity {
             Intent intent = new Intent(this, BuddiesActivity.class);
             startActivity(intent);
         }
+        if (!this.getLocalClassName().equals("MainActivity")){
+        	finish();
+        }
     }
 
     public void scoresView(View v) {
@@ -64,6 +74,9 @@ public class GenericActivity extends FragmentActivity {
             Intent intent = new Intent(this, ScoresActivity.class);
             startActivity(intent);
         }
+        if (!this.getLocalClassName().equals("MainActivity")){
+        	finish();
+        }
     }
 
     public void meView(View v) {
@@ -71,6 +84,9 @@ public class GenericActivity extends FragmentActivity {
             //call the login class
             Intent intent = new Intent(this, MeActivity.class);
             startActivity(intent);           
+        }
+        if (!this.getLocalClassName().equals("MainActivity")){
+        	finish();
         }
     }
     
