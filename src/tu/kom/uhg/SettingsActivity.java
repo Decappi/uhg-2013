@@ -2,13 +2,11 @@ package tu.kom.uhg;
 
 import android.os.Bundle;
 import android.view.Menu;
-import android.widget.Toast;
 
 public class SettingsActivity extends GenericActivity{
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 	    setContentView(R.layout.activity_settings);
-	    Toast.makeText(this, "settings activity loaded", Toast.LENGTH_LONG).show();
 	}
 	
 	public boolean onCreateOptionsMenu(Menu menu) {
