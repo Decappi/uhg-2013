@@ -1,24 +1,12 @@
 package tu.kom.uhg;
 
-import java.io.Serializable;
-import java.sql.Date;
 import java.util.ArrayList;
-import java.util.HashMap;
  
-import android.app.Activity;
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.widget.ListView;
-import android.widget.Toast;
 
 public class ScoresActivity extends GenericActivity {
 
@@ -28,7 +16,6 @@ public class ScoresActivity extends GenericActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_scores);
-		Toast.makeText(this, "scores activity loaded", Toast.LENGTH_LONG).show();
 
 		//read the prefs
 		SharedPreferences prefs = getSharedPreferences("scores", MODE_PRIVATE);

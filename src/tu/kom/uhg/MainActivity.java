@@ -1,13 +1,9 @@
 package tu.kom.uhg;
 
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.SupportMapFragment;
-
 import tu.kom.uhg.R;
 
 import android.os.Bundle;
 import android.view.Menu;
-import android.widget.Toast;
 import tu.kom.uhg.GenericActivity;
  
 public class MainActivity extends GenericActivity {
@@ -18,7 +14,6 @@ public class MainActivity extends GenericActivity {
 		setContentView(R.layout.activity_main);
 		
 		mapView(getCurrentFocus());
-		Toast.makeText(this, "main activity loaded", Toast.LENGTH_SHORT).show();
 	}
 
 	public boolean onCreateOptionsMenu(Menu menu) {

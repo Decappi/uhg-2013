@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
 public class BuddiesActivity extends GenericActivity {
 
@@ -19,8 +18,6 @@ public class BuddiesActivity extends GenericActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_buddies);
-		Toast.makeText(this, "buddies activity loaded", Toast.LENGTH_LONG)
-				.show();
 
 		SharedPreferences prefs = getSharedPreferences("buddies", MODE_PRIVATE);
 		int buddiesNum = prefs.getInt("buddies_num", 3);
@@ -59,7 +56,6 @@ public class BuddiesActivity extends GenericActivity {
 	}
 
 	public void addBuddy(View v){
-		Toast.makeText(this, "addBuddy Clicked", Toast.LENGTH_LONG).show();
 		//get the entered buddyname
 		EditText newBuddyTxt = (EditText)findViewById(R.id.txt_newBuddy);
 		String newBuddyName = newBuddyTxt.getText().toString();

@@ -23,7 +23,6 @@ public class MapActivity extends GenericActivity implements android.location.Loc
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		Toast.makeText(this, "map activity loaded", Toast.LENGTH_LONG).show();
 		
 		map = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map)).getMap();
 		map.setMyLocationEnabled(true);
@@ -79,13 +78,9 @@ public class MapActivity extends GenericActivity implements android.location.Loc
 
 	@Override
 	public void onProviderEnabled(String provider) {
-	  Toast.makeText(this, "Enabled new provider " + provider,
-	      Toast.LENGTH_SHORT).show();
 	}
 
 	@Override
 	public void onProviderDisabled(String provider) {
-		Toast.makeText(this, "Disabled provider " + provider,
-	    Toast.LENGTH_SHORT).show();
 	}
 }
