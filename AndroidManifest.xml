@@ -47,6 +47,7 @@
         <activity android:name="tu.kom.uhg.MeActivity" android:label="@string/app_name" android:theme="@android:style/Theme.Light.NoTitleBar"/>
         <activity android:name="tu.kom.uhg.SettingsActivity" android:label="@string/app_name" android:theme="@android:style/Theme.Light.NoTitleBar"/>
         <activity android:name="tu.kom.uhg.ScoresActivity" android:label="@string/app_name" android:theme="@android:style/Theme.Light.NoTitleBar"/>
+        <activity android:name="tu.kom.uhg.QuizActivity" android:label="@string/app_name" android:theme="@android:style/Theme.Light.NoTitleBar"/>
         
         <uses-library android:name="com.google.android.maps" />
         <meta-data

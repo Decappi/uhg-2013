@@ -1,5 +1,6 @@
 package tu.kom.uhg;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
@@ -34,6 +35,10 @@ public void onCreate(Bundle savedInstanceState) {
 			    Object o = gamesList.getItemAtPosition(position);
 			    Toast.makeText(GamesActivity.this, "This game is not yet available", Toast.LENGTH_LONG)
 				.show();
+			    //quiz start
+			    Intent intent = new Intent(GamesActivity.this, QuizActivity.class);
+		        startActivity(intent);
+		        //
 			  }
 		});
 	}
