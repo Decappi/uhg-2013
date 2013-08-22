@@ -18,6 +18,7 @@ public class GenericActivity extends FragmentActivity {
     String UserNickname = "Xena die Kriegerprinzessin";
     public final static String NICKNAME = "com.tud.uhg.NICKNAME";
 
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -26,7 +27,7 @@ public class GenericActivity extends FragmentActivity {
     }
 
     public void mapView(View v) {
-        if (!this.getLocalClassName().equals("MainActivity") &&
+        if (//!this.getLocalClassName().equals("MainActivity") &&
     		!this.getLocalClassName().equals("MapActivity")){
         	//call the login class
             Intent intent = new Intent(this, MapActivity.class);

@@ -8,6 +8,7 @@ import tu.kom.uhg.GenericActivity;
  
 public class MainActivity extends GenericActivity {
 	
+	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		

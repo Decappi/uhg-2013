@@ -34,6 +34,7 @@ public class MapActivity extends GenericActivity implements android.location.Loc
 	private Marker marker4;
 	private Marker marker5;
 	
+	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
