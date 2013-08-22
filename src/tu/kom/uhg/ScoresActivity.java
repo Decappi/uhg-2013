@@ -1,9 +1,12 @@
 package tu.kom.uhg;
 
 import java.util.ArrayList;
+
+import com.google.gson.Gson;
  
 import android.widget.ArrayAdapter;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.widget.ListView;
@@ -19,9 +22,12 @@ public class ScoresActivity extends GenericActivity {
 
 		//read the prefs
 		SharedPreferences prefs = getSharedPreferences("scores", MODE_PRIVATE);
-		String scoresStr = prefs.getString("scores", null);
-		Score scores = new Score();
-		if (scoresStr == null){//no data was found, fill the array with default data
+		String scoresStr = prefs.getString("scores", "");
+		
+		Gson gson = new Gson();
+	    Score scores = gson.fromJson(scoresStr, Score.class);
+		
+		if (scoresStr == ""){//no data was found, fill the array with default data
 			scores.addGame("Gate Run", 0.3, 0.1, 0.6)
 			.addGame("Ping Pong", .2, .5, .3)
 			.addGame("Frisbee", .2, .4, .4)
@@ -35,6 +41,12 @@ public class ScoresActivity extends GenericActivity {
 			.append("Frisbee", 		"28.07.13", 100)
 			.append("Frisbee", 		"29.07.13", 100)
 			.append("Frisbee", 		"30.07.13", 100);
+			
+			Editor prefsEditor = prefs.edit();
+			gson = new Gson();
+			String json = gson.toJson("scores");
+			prefsEditor.putString("scores", json);
+			prefsEditor.commit();
 		}
 		
 		String[] scoreNamesList = new String[scores.gameNames.size()];
