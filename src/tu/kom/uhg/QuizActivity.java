@@ -108,10 +108,10 @@ public class QuizActivity extends GenericActivity {
 
 			question.setText(quesValue.toCharArray(), 0, quesValue.length());
 			answers.check(-1);
-			answer1.setTextColor(Color.WHITE);
-			answer2.setTextColor(Color.WHITE);
-			answer3.setTextColor(Color.WHITE);
-			answer4.setTextColor(Color.WHITE);
+			answer1.setTextColor(Color.BLACK);
+			answer2.setTextColor(Color.BLACK);
+			answer3.setTextColor(Color.BLACK);
+			answer4.setTextColor(Color.BLACK);
 			JSONArray ansList = aQues.getJSONArray("Answers");
 			String aAns = ansList.getJSONObject(0).getString("Answer");
 			answer1.setText(aAns.toCharArray(), 0, aAns.length());
@@ -186,6 +186,8 @@ public class QuizActivity extends GenericActivity {
 			alertDialog.setTitle("Score");
 			alertDialog.setMessage((score) +" out of " + (QuizActivity.getQuesList().length()));
 
+			//retake button
+			/* 
 			alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Retake", new DialogInterface.OnClickListener(){
 
 				public void onClick(DialogInterface dialog, int which) {
@@ -194,6 +196,7 @@ public class QuizActivity extends GenericActivity {
 					QuizActivity.this.showQuestion(0, review);
 				}
 			});
+			*/
 
 			alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Review", new DialogInterface.OnClickListener(){
 
@@ -265,7 +268,7 @@ public class QuizActivity extends GenericActivity {
 	 private void loadQuestions() throws Exception {
 	    	try {
 			InputStream questions = this.getBaseContext().getResources()
-					.openRawResource(R.raw.questions);
+					.openRawResource(R.raw.questions_default);
 			bReader = new BufferedReader(new InputStreamReader(questions));
 			StringBuilder quesString = new StringBuilder();
 			String aJsonLine = null;
