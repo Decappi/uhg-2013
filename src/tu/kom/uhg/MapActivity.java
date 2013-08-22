@@ -10,6 +10,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import android.content.Context;
+import android.content.Intent;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
@@ -18,7 +19,7 @@ import android.view.Menu;
 import android.widget.Toast;
 
 public class MapActivity extends GenericActivity implements 
-android.location.LocationListener, OnMarkerClickListener {
+OnMarkerClickListener, android.location.LocationListener{
 	
 	private LocationManager locationManager;
 	private String provider;
@@ -42,6 +43,7 @@ android.location.LocationListener, OnMarkerClickListener {
 		
 		map = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map)).getMap();
 		map.setMyLocationEnabled(true);
+		map.setOnMarkerClickListener(this);
 		
 		// Get the location manager
 	    locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -105,14 +107,10 @@ android.location.LocationListener, OnMarkerClickListener {
 	
 	@Override
     public boolean onMarkerClick(final Marker marker) {
-		if (marker.equals(marker1)) {
-			Toast.makeText(MapActivity.this, "marker1", duration)
-			.show();
-		}
-		if (marker.equals(marker2)) {
-			Toast.makeText(MapActivity.this, "marker2", duration)
-			.show();
-		}
+		Intent intent = new Intent(MapActivity.this, QuizActivity.class);
+		intent.putExtra("markerId", marker.getId());
+        startActivity(intent);
+        
 		// We return false to indicate that we have not consumed the event and that we wish
         // for the default behavior to occur (which is for the camera to move such that the
         // marker is centered and for the marker's info window to open, if it has one).

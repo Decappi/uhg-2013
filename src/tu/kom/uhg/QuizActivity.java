@@ -58,12 +58,11 @@ public class QuizActivity extends GenericActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_quiz);
 
-		TableLayout quizLayout = (TableLayout) findViewById(R.id.quizLayout);
+		TableLayout quizLayout = (TableLayout) findViewById(R.id.quizLayout);		
 		quizLayout.setVisibility(android.view.View.INVISIBLE);		
 		
 		try {
 			loadQuestions();
-			
 			question = (EditText) findViewById(R.id.question);
 			answer1 = (RadioButton) findViewById(R.id.a0);
 			answer2 = (RadioButton) findViewById(R.id.a1);
@@ -267,24 +266,38 @@ public class QuizActivity extends GenericActivity {
 	
 	 private void loadQuestions() throws Exception {
 	    	try {
-			InputStream questions = this.getBaseContext().getResources()
-					.openRawResource(R.raw.questions_default);
-			bReader = new BufferedReader(new InputStreamReader(questions));
-			StringBuilder quesString = new StringBuilder();
-			String aJsonLine = null;
-			while ((aJsonLine = bReader.readLine()) != null) {
-				quesString.append(aJsonLine);
-			}
-			Log.d(this.getClass().toString(), quesString.toString());
-			JSONObject quesObj = new JSONObject(quesString.toString());
-			quesList = quesObj.getJSONArray("Questions");
-			Log.d(this.getClass().getName(),
+	    		Bundle extras = getIntent().getExtras();
+	    		String fileSuffix;
+	    		if (extras != null) {
+		    		fileSuffix = extras.getString("markerId");
+		    		if (fileSuffix == null) fileSuffix = "default";
+	    		}else{
+	    			fileSuffix = "default";
+	    		}
+	    		int resId = getResources().getIdentifier("raw/questions_" + fileSuffix, "txt", getPackageName());
+	    		if (resId == 0)
+	    			resId = getResources().getIdentifier("raw/questions_default", "txt", getPackageName());
+	    		
+	    		InputStream questions = this.getBaseContext().getResources()
+					.openRawResource(resId);
+	    		
+				bReader = new BufferedReader(new InputStreamReader(questions));
+				StringBuilder quesString = new StringBuilder();
+				String aJsonLine = null;
+				while ((aJsonLine = bReader.readLine()) != null) {
+					quesString.append(aJsonLine);
+				}
+				Log.d(this.getClass().toString(), quesString.toString());
+				JSONObject quesObj = new JSONObject(quesString.toString());
+				quesList = quesObj.getJSONArray("Questions");
+				Log.d(this.getClass().getName(),
 					"Num Questions " + quesList.length());
 	    	} catch (Exception e){
 	    		
 	    	} finally {
 				try {
-					bReader.close();
+					if (bReader != null)
+						bReader.close();
 				} catch (Exception e) {
 					Log.e("", e.getMessage().toString(), e.getCause());
 				}
