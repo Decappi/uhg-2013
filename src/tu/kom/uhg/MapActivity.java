@@ -2,9 +2,9 @@ package tu.kom.uhg;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -17,7 +17,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.widget.Toast;
 
-public class MapActivity extends GenericActivity implements android.location.LocationListener{
+public class MapActivity extends GenericActivity implements 
+android.location.LocationListener, OnMarkerClickListener {
 	
 	private LocationManager locationManager;
 	private String provider;
@@ -77,7 +78,7 @@ public class MapActivity extends GenericActivity implements android.location.Loc
 		loc5.setLatitude(MARKER5.latitude);
 		loc5.setLongitude(MARKER5.longitude);
 		
-		if (loc1.distanceTo(myLoc) <= 50)
+		//if (loc1.distanceTo(myLoc) <= 50)
 			marker1 = map.addMarker(new MarkerOptions()
 			.position(MARKER1)
 	        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
@@ -100,6 +101,22 @@ public class MapActivity extends GenericActivity implements android.location.Loc
 			marker5 = map.addMarker(new MarkerOptions()
 	        .position(MARKER5)
 	        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+	}
+	
+	@Override
+    public boolean onMarkerClick(final Marker marker) {
+		if (marker.equals(marker1)) {
+			Toast.makeText(MapActivity.this, "marker1", duration)
+			.show();
+		}
+		if (marker.equals(marker2)) {
+			Toast.makeText(MapActivity.this, "marker2", duration)
+			.show();
+		}
+		// We return false to indicate that we have not consumed the event and that we wish
+        // for the default behavior to occur (which is for the camera to move such that the
+        // marker is centered and for the marker's info window to open, if it has one).
+		return false;
 	}
 
 	/* Request updates at startup */
