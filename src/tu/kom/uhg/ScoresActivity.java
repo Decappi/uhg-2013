@@ -103,7 +103,7 @@ public class ScoresActivity extends GenericActivity {
 		public class Game{
 			public ArrayList<String> dates = new ArrayList<String>();
 			public ArrayList<Integer> scores = new ArrayList<Integer>();
-			public ArrayList<Double> ratio = new ArrayList<Double>(3);//head, arms, legs
+			public ArrayList<Double> ratio = new ArrayList<Double>();//head, arms, legs
 			
 			public Game(double headRatio, double armsRatio, double legsRatio){
 				ratio.add(headRatio);
