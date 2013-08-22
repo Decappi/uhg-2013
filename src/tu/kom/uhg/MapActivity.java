@@ -80,26 +80,26 @@ OnMarkerClickListener, android.location.LocationListener{
 		loc5.setLatitude(MARKER5.latitude);
 		loc5.setLongitude(MARKER5.longitude);
 		
-		//if (loc1.distanceTo(myLoc) <= 50)
+		//if (loc1.distanceTo(myLoc) <= ACTIVATION_DISTANCE)
 			marker1 = map.addMarker(new MarkerOptions()
 			.position(MARKER1)
 	        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
 		
-		if (loc2.distanceTo(myLoc) <= 50)
+		if (loc2.distanceTo(myLoc) <= ACTIVATION_DISTANCE)
 			marker2 = map.addMarker(new MarkerOptions()
 	        .position(MARKER2)
 	        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
-		if (loc3.distanceTo(myLoc) <= 50)
+		if (loc3.distanceTo(myLoc) <= ACTIVATION_DISTANCE)
 			marker3 = map.addMarker(new MarkerOptions()
 	        .position(MARKER3)
 	        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
 		
-		if (loc4.distanceTo(myLoc) <= 50)
+		if (loc4.distanceTo(myLoc) <= ACTIVATION_DISTANCE)
 			marker4 = map.addMarker(new MarkerOptions()
 	        .position(MARKER4)
 	        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
 		
-		if (loc5.distanceTo(myLoc) <= 50)
+		if (loc5.distanceTo(myLoc) <= ACTIVATION_DISTANCE)
 			marker5 = map.addMarker(new MarkerOptions()
 	        .position(MARKER5)
 	        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));

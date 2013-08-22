@@ -17,6 +17,7 @@ public class GenericActivity extends FragmentActivity {
     Toast toast;
     String UserNickname = "Xena die Kriegerprinzessin";
     public final static String NICKNAME = "com.tud.uhg.NICKNAME";
+    public final static int ACTIVATION_DISTANCE = 100;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

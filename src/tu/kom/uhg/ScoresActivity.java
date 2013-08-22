@@ -22,9 +22,10 @@ public class ScoresActivity extends GenericActivity {
 		String scoresStr = prefs.getString("scores", null);
 		Score scores = new Score();
 		if (scoresStr == null){//no data was found, fill the array with default data
-			scores.addGame("Gate Run")
-			.addGame("Ping Pong")
-			.addGame("Frisbee")
+			scores.addGame("Gate Run", 0.3, 0.1, 0.6)
+			.addGame("Ping Pong", .2, .5, .3)
+			.addGame("Frisbee", .2, .4, .4)
+			.addGame("Quiz", 1, 0, 0)
 			.append("Ping Pong", 	"28.07.13", 500)
 			.append("Ping Pong", 	"29.07.13", 100)
 			.append("Ping Pong", 	"30.07.13", 150)
@@ -67,8 +68,8 @@ public class ScoresActivity extends GenericActivity {
 		public ArrayList<Game> games = new ArrayList<Game>();
 		public ArrayList<String> gameNames = new ArrayList<String>();
 		
-		public Score addGame (String newGameName){
-			Game game = new Game();
+		public Score addGame (String newGameName, double headRatio, double armsRatio, double legsRatio){
+			Game game = new Game(headRatio, armsRatio, legsRatio);
 			gameNames.add(newGameName);
 			games.add(game);
 			return this;
@@ -89,20 +90,37 @@ public class ScoresActivity extends GenericActivity {
 		public class Game{
 			public ArrayList<String> dates = new ArrayList<String>();
 			public ArrayList<Integer> scores = new ArrayList<Integer>();
+			public ArrayList<Double> ratio = new ArrayList<Double>(3);//head, arms, legs
+			
+			public Game(double headRatio, double armsRatio, double legsRatio){
+				ratio.set(0, headRatio);
+				ratio.set(1, armsRatio);
+				ratio.set(2, legsRatio);
+			}
 			
 			public void addScore (String newDate, Integer newScore){
 				dates.add(newDate);
 				scores.add(newScore);
 			}
-			 public Integer getTotalScore () {
-				 Integer result = 0;
-				 if(scores.size() > 0) {
-					 for(int i = 0; i < scores.size(); i++) {
-						 result += scores.get(i);
-					 }
-				 }				 
-				 return result;
-			 }
+			public Integer getTotalScore () {
+				Integer result = 0;
+				if(scores.size() > 0) {
+					for(int i = 0; i < scores.size(); i++) {
+						result += scores.get(i);
+					}
+				}				 
+				return result;
+			}
+			
+			public Double getHeadScore () {
+				return getTotalScore() * ratio.get(0);
+			}
+			public Double getArmsScore () {
+				return getTotalScore() * ratio.get(1);
+			}
+			public Double getLegsScore () {
+				return getTotalScore() * ratio.get(2);
+			}
 		}
 	}
 
