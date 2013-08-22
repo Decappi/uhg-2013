@@ -27,7 +27,8 @@ public class ScoresActivity extends GenericActivity {
 		Gson gson = new Gson();
 	    Score scores = gson.fromJson(scoresStr, Score.class);
 		
-		if (scoresStr == ""){//no data was found, fill the array with default data
+		if (scores == null){//no data was found, fill the array with default data
+			scores = new Score();
 			scores.addGame("Gate Run", 0.3, 0.1, 0.6)
 			.addGame("Ping Pong", .2, .5, .3)
 			.addGame("Frisbee", .2, .4, .4)
@@ -102,12 +103,12 @@ public class ScoresActivity extends GenericActivity {
 		public class Game{
 			public ArrayList<String> dates = new ArrayList<String>();
 			public ArrayList<Integer> scores = new ArrayList<Integer>();
-			public ArrayList<Double> ratio = new ArrayList<Double>(3);//head, arms, legs
+			public ArrayList<Double> ratio = new ArrayList<Double>();//head, arms, legs
 			
 			public Game(double headRatio, double armsRatio, double legsRatio){
-				ratio.set(0, headRatio);
-				ratio.set(1, armsRatio);
-				ratio.set(2, legsRatio);
+				ratio.add(headRatio);
+				ratio.add(armsRatio);
+				ratio.add(legsRatio);
 			}
 			
 			public void addScore (String newDate, Integer newScore){
