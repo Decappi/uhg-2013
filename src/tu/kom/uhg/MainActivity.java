@@ -2,6 +2,7 @@ package tu.kom.uhg;
 
 import tu.kom.uhg.R;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import tu.kom.uhg.GenericActivity;
@@ -12,9 +13,12 @@ public class MainActivity extends GenericActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		setContentView(R.layout.activity_main);
+		/*setContentView(R.layout.activity_main);
 		
-		mapView(getCurrentFocus());
+		mapView(getCurrentFocus());*/
+		Intent intent = new Intent(this, GaterunActivity.class);
+        startActivity(intent);
+        finish();
 	}
 
 	public boolean onCreateOptionsMenu(Menu menu) {
