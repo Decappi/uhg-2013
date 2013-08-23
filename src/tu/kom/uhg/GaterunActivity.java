@@ -91,6 +91,17 @@ OnMarkerClickListener, android.location.LocationListener{
 	        System.out.println("Provider " + provider + " has been selected.");
 	        onLocationChanged(location);
 	    }
+	    
+	    showMarkersFromList();
+	}
+	
+	public void showMarkersFromList() {
+		for (LatLng marker : gateList){
+			map.addMarker(new MarkerOptions()
+				.position(marker)
+				.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
+			);
+		}
 	}
 	
 	private void addMarkersToMap(Location myLoc) {
@@ -172,13 +183,13 @@ OnMarkerClickListener, android.location.LocationListener{
 	
 	@Override
 	public void onLocationChanged(Location location) {
-		double lat = location.getLatitude();
+		/*double lat = location.getLatitude();
 		double lon = location.getLongitude();
 		LatLng target = new LatLng(lat, lon);
 		//move camera center to the current position
 		map.animateCamera(CameraUpdateFactory.newLatLng(target));
 		map.clear();
-	    addMarkersToMap(location);
+	    addMarkersToMap(location);*/
 	}
 
 	@Override
