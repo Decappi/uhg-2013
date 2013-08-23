@@ -111,8 +111,9 @@ public class GenericActivity extends FragmentActivity {
 		//decode gson string to the scores object
 		Gson gson = new Gson();
 		Score scores = gson.fromJson(scoresStr, Score.class);
-		if (scores == null){
-			scores = new Score();
+		if (scores == null || scores.gameNames.indexOf(gameName) == -1){
+			if(scores == null)
+				scores = new Score();
 			scores.addGame(gameName, rHead, rArms, rLegs);
 		}
 		
@@ -153,6 +154,7 @@ public class GenericActivity extends FragmentActivity {
 			public ArrayList<String> dates = new ArrayList<String>();
 			public ArrayList<Integer> scores = new ArrayList<Integer>();
 			public ArrayList<Double> ratio = new ArrayList<Double>();//head, arms, legs
+			//public ArrayList<Integer> heartRate = new ArrayList<Integer>();//high, optimal, low
 			
 			public Game(double headRatio, double armsRatio, double legsRatio){
 				ratio.add(headRatio);

@@ -1,6 +1,10 @@
 package tu.kom.uhg;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Locale;
+import java.util.Random;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -26,6 +30,15 @@ OnMarkerClickListener, android.location.LocationListener{
 	private LocationManager locationManager;
 	private String provider;
 	private GoogleMap map;
+	private static final int GATEDISTANCE = 50;
+	private Location myLoc = new Location("myLoc");
+	private LatLng nextGate = null;
+	private int score = 0;
+	double rHead = 0.3;
+	double rArms = 0.1;
+	double rLegs = 0.6;
+	
+	
 	private static final LatLng MARKER1 = new LatLng(49.8513, 8.63194);
 	private static final LatLng MARKER2 = new LatLng(49.8771, 8.65362);
 	private static final LatLng MARKER3 = new LatLng(49.8777, 8.6519);
@@ -92,7 +105,51 @@ OnMarkerClickListener, android.location.LocationListener{
 	        onLocationChanged(location);
 	    }
 	    
-	    showMarkersFromList();
+	    //showMarkersFromList();
+	    
+	   
+	}
+	
+	public void findNextGate() {
+		int stepToSearch = 0;
+		
+		//get a list of the nearest gates 
+		ArrayList<LatLng> tmpList = findNextGate(stepToSearch);
+		if(tmpList.size() == 1){
+			nextGate =  tmpList.get(0);
+		}else{
+			//get one randomly
+			Random rand = new Random();
+			int index = rand.nextInt(tmpList.size() - 1);
+			nextGate =  tmpList.get(index);
+			//delete all unused gates from the gateList
+			tmpList.remove(index);
+			for(LatLng gate : tmpList) {
+				gateList.remove(gate);
+			}	
+		}	
+		
+		//show gate on map
+		map.addMarker(new MarkerOptions()
+		.position(nextGate)
+		.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+	}
+	
+	public ArrayList<LatLng> findNextGate(int stepToSearch) {
+		ArrayList<LatLng> tmpList = new ArrayList<LatLng>();
+		for(LatLng gate : gateList) {
+			Location loc = new Location("gate");
+			loc.setLatitude(gate.latitude);
+			loc.setLongitude(gate.longitude);
+			
+			if (loc.distanceTo(myLoc) <= GATEDISTANCE + stepToSearch) {
+				tmpList.add(gate);
+			}
+		}
+		if(tmpList.size() == 0) {
+			return findNextGate(stepToSearch + 50);
+		}
+		return tmpList;
 	}
 	
 	public void showMarkersFromList() {
@@ -103,58 +160,19 @@ OnMarkerClickListener, android.location.LocationListener{
 			);
 		}
 	}
-	
-	private void addMarkersToMap(Location myLoc) {
-		Location loc1 = new Location("Marker1");
-		loc1.setLatitude(MARKER1.latitude);
-		loc1.setLongitude(MARKER1.longitude);
-		
-		Location loc2 = new Location("Marker2");
-		loc2.setLatitude(MARKER2.latitude);
-		loc2.setLongitude(MARKER2.longitude);
-		
-		Location loc3 = new Location("Marker3");
-		loc3.setLatitude(MARKER3.latitude);
-		loc3.setLongitude(MARKER3.longitude);
-		
-		Location loc4 = new Location("Marker4");
-		loc4.setLatitude(MARKER4.latitude);
-		loc4.setLongitude(MARKER4.longitude);
-		
-		Location loc5 = new Location("Marker5");
-		loc5.setLatitude(MARKER5.latitude);
-		loc5.setLongitude(MARKER5.longitude);
-		
-		//if (loc1.distanceTo(myLoc) <= ACTIVATION_DISTANCE)
-			marker1 = map.addMarker(new MarkerOptions()
-			.position(MARKER1)
-	        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
-		
-		if (loc2.distanceTo(myLoc) <= ACTIVATION_DISTANCE)
+	/*
+	 * 
+	 * if (loc2.distanceTo(myLoc) <= ACTIVATION_DISTANCE)
 			marker2 = map.addMarker(new MarkerOptions()
 	        .position(MARKER2)
 	        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
-		if (loc3.distanceTo(myLoc) <= ACTIVATION_DISTANCE)
-			marker3 = map.addMarker(new MarkerOptions()
-	        .position(MARKER3)
-	        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
-		
-		if (loc4.distanceTo(myLoc) <= ACTIVATION_DISTANCE)
-			marker4 = map.addMarker(new MarkerOptions()
-	        .position(MARKER4)
-	        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
-		
-		if (loc5.distanceTo(myLoc) <= ACTIVATION_DISTANCE)
-			marker5 = map.addMarker(new MarkerOptions()
-	        .position(MARKER5)
-	        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
-	}
+	 * 
+	 */
+	
 	
 	@Override
     public boolean onMarkerClick(final Marker marker) {
-		Intent intent = new Intent(GaterunActivity.this, QuizActivity.class);
-		intent.putExtra("markerId", marker.getId());
-        startActivity(intent);
+		Toast.makeText(GaterunActivity.this, "get me", Toast.LENGTH_LONG).show();
         
 		// We return false to indicate that we have not consumed the event and that we wish
         // for the default behavior to occur (which is for the camera to move such that the
@@ -190,6 +208,45 @@ OnMarkerClickListener, android.location.LocationListener{
 		map.animateCamera(CameraUpdateFactory.newLatLng(target));
 		map.clear();
 	    addMarkersToMap(location);*/
+		
+		myLoc = location;		
+		//find next gate
+		double lat = location.getLatitude();
+		double lon = location.getLongitude();
+		LatLng target = new LatLng(lat, lon);
+		//move camera center to the current position
+		map.animateCamera(CameraUpdateFactory.newLatLng(target));
+		
+		//game started nextGate == null -> findNextGate
+		if(nextGate == null) {
+			findNextGate();
+		}else{
+			//nextGate reached? -> findNextgate
+			//nextGate reached in time
+			if(gateReached()) {
+				score = score + 100;
+				map.clear();
+				gateList.remove(nextGate);
+				findNextGate();
+			}
+			//nextGate reached after Time 
+		}
+		
+		
+				
+
+	}
+	
+	public boolean gateReached() {
+		
+		Location loc = new Location("");
+		loc.setLatitude(nextGate.latitude);
+		loc.setLongitude(nextGate.longitude);
+		
+		if (loc.distanceTo(myLoc) <= 5) {
+			return true;
+		}
+		return false;
 	}
 
 	@Override
@@ -204,5 +261,17 @@ OnMarkerClickListener, android.location.LocationListener{
 
 	@Override
 	public void onProviderDisabled(String provider) {
+	}
+	
+	@Override
+	public void finish() {
+		//submit score
+		//convert date to format ("dd.mm.yy")
+		Calendar c = Calendar.getInstance();
+		SimpleDateFormat df = new SimpleDateFormat("dd.mm.yy", Locale.GERMANY);
+		String date = df.format(c.getTime());	
+		addScore("Gate Run", date, score, rHead, rArms, rLegs);
+		
+		super.finish();
 	}
 }
