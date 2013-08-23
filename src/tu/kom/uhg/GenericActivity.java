@@ -104,13 +104,18 @@ public class GenericActivity extends FragmentActivity {
         }
     }
     
-    public void addScore (String gameName, String date, Integer score) {
+    public void addScore (String gameName, String date, Integer score, double rHead, double rArms, double rLegs) {
 		//read scores from sharedPrefs
 		SharedPreferences prefs = getSharedPreferences("scores", MODE_PRIVATE);
 		String scoresStr = prefs.getString("scores", "");
 		//decode gson string to the scores object
 		Gson gson = new Gson();
 		Score scores = gson.fromJson(scoresStr, Score.class);
+		if (scores == null){
+			scores = new Score();
+			scores.addGame(gameName, rHead, rArms, rLegs);
+		}
+		
 		//append the new score
 		scores.append(gameName, date, score);
 		//encode back & save back to prefs
