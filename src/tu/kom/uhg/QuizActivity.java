@@ -57,6 +57,10 @@ public class QuizActivity extends GenericActivity {
 	int correctAns[] = null;
 	boolean review =false;
 	Button prev, next = null;
+	double rHead = 1;
+	double rArms = 0;
+	double rLegs = 0;
+	int score = 0;
 	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -179,17 +183,12 @@ public class QuizActivity extends GenericActivity {
 		public void onClick(View v) {
 			setAnswer();
 			//Calculate Score
-			int score = 0;
+			score = 0;
 			for(int i=0; i<correctAns.length; i++){
 				if ((correctAns[i] != -1) && (correctAns[i] == selected[i]))
 					score++;
 			}
-			//convert date to format ("dd.mm.yy")
-			Calendar c = Calendar.getInstance();
-			SimpleDateFormat df = new SimpleDateFormat("dd.mm.yy", Locale.GERMANY);
-			String date = df.format(c.getTime());
 			
-			addScore("Quiz", date, score*100);
 			AlertDialog alertDialog;
 			alertDialog = new AlertDialog.Builder(QuizActivity.this).create();
 			alertDialog.setTitle("Score");
@@ -220,6 +219,11 @@ public class QuizActivity extends GenericActivity {
 
 				public void onClick(DialogInterface dialog, int which) {
 					review = false;
+					//convert date to format ("dd.mm.yy")
+					Calendar c = Calendar.getInstance();
+					SimpleDateFormat df = new SimpleDateFormat("dd.mm.yy", Locale.GERMANY);
+					String date = df.format(c.getTime());					
+					addScore("Quiz", date, score*100, rHead, rArms, rLegs);
 					finish();
 				}
 			});
