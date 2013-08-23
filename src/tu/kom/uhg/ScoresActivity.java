@@ -45,7 +45,7 @@ public class ScoresActivity extends GenericActivity {
 			
 			Editor prefsEditor = prefs.edit();
 			gson = new Gson();
-			String json = gson.toJson("scores");
+			String json = gson.toJson(scores);
 			prefsEditor.putString("scores", json);
 			prefsEditor.commit();
 		}
@@ -76,65 +76,4 @@ public class ScoresActivity extends GenericActivity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
-	
-	public class Score {
-		public ArrayList<Game> games = new ArrayList<Game>();
-		public ArrayList<String> gameNames = new ArrayList<String>();
-		
-		public Score addGame (String newGameName, double headRatio, double armsRatio, double legsRatio){
-			Game game = new Game(headRatio, armsRatio, legsRatio);
-			gameNames.add(newGameName);
-			games.add(game);
-			return this;
-		}
-		
-		public Score append (String gameName, String date, Integer score){
-			Integer gameNumber = gameNames.indexOf(gameName);
-			/*
-			Game game = games.get(gameNumber);
-			game.addScore(date, score);
-			games.add(gameNumber, game);
-			*/
-			games.get(gameNumber).addScore(date, score);
-
-			return this;
-		}
-		
-		public class Game{
-			public ArrayList<String> dates = new ArrayList<String>();
-			public ArrayList<Integer> scores = new ArrayList<Integer>();
-			public ArrayList<Double> ratio = new ArrayList<Double>();//head, arms, legs
-			
-			public Game(double headRatio, double armsRatio, double legsRatio){
-				ratio.add(headRatio);
-				ratio.add(armsRatio);
-				ratio.add(legsRatio);
-			}
-			
-			public void addScore (String newDate, Integer newScore){
-				dates.add(newDate);
-				scores.add(newScore);
-			}
-			public Integer getTotalScore () {
-				Integer result = 0;
-				if(scores.size() > 0) {
-					for(int i = 0; i < scores.size(); i++) {
-						result += scores.get(i);
-					}
-				}				 
-				return result;
-			}
-			
-			public Double getHeadScore () {
-				return getTotalScore() * ratio.get(0);
-			}
-			public Double getArmsScore () {
-				return getTotalScore() * ratio.get(1);
-			}
-			public Double getLegsScore () {
-				return getTotalScore() * ratio.get(2);
-			}
-		}
-	}
-
 }

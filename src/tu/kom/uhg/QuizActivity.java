@@ -5,7 +5,11 @@ import android.os.Bundle;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -180,6 +184,12 @@ public class QuizActivity extends GenericActivity {
 				if ((correctAns[i] != -1) && (correctAns[i] == selected[i]))
 					score++;
 			}
+			//convert date to format ("dd.mm.yy")
+			Calendar c = Calendar.getInstance();
+			SimpleDateFormat df = new SimpleDateFormat("dd.mm.yy", Locale.GERMANY);
+			String date = df.format(c.getTime());
+			
+			addScore("Quiz", date, score*100);
 			AlertDialog alertDialog;
 			alertDialog = new AlertDialog.Builder(QuizActivity.this).create();
 			alertDialog.setTitle("Score");
