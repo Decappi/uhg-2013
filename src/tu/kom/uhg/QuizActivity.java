@@ -186,7 +186,7 @@ public class QuizActivity extends GenericActivity {
 			}
 			//convert date to format ("dd.mm.yy")
 			Calendar c = Calendar.getInstance();
-			SimpleDateFormat df = new SimpleDateFormat("dd.mm.yy", Locale.GERMANY);
+			SimpleDateFormat df = new SimpleDateFormat("dd.m.yy", Locale.GERMANY);
 			String date = df.format(c.getTime());
 			
 			addScore("Quiz", date, score*100);

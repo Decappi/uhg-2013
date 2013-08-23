@@ -1,0 +1,20 @@
+﻿asdf
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is behind 'origin/master' by 1 commit, and can be fast-forwarded.
+#   (use "git pull" to update your local branch)
+#
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	modified:   AndroidManifest.xml
+#	modified:   src/tu/kom/uhg/GamesActivity.java
+#	modified:   src/tu/kom/uhg/QuizActivity.java
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	res/layout/activity_gaterun.xml
+#	src/tu/kom/uhg/GaterunActivity.java
+

@@ -33,12 +33,17 @@ public void onCreate(Bundle savedInstanceState) {
 			  public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
 
 			    Object o = gamesList.getItemAtPosition(position);
-			    Toast.makeText(GamesActivity.this, "This game is not yet available", Toast.LENGTH_LONG)
-				.show();
-			    //quiz start
+			    if (o.toString() == "Gate Run"){
+			    	Intent intent = new Intent(GamesActivity.this, GaterunActivity.class);
+		            startActivity(intent);
+			    }else{
+				    Toast.makeText(GamesActivity.this, "This game is not yet available", Toast.LENGTH_LONG)
+					.show();
+			    }
+/*			    //quiz start
 			    Intent intent = new Intent(GamesActivity.this, QuizActivity.class);
 		        startActivity(intent);
-		        //
+		        //*/
 			  }
 		});
 	}
