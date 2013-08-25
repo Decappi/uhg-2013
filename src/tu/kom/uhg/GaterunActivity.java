@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -31,13 +33,15 @@ OnMarkerClickListener, android.location.LocationListener{
 	private String provider;
 	private GoogleMap map;
 	private static final int GATEDISTANCE = 50;
+	long DELAY = 10 * 1000;//180 secs
+	boolean inTime = true;
 	private Location myLoc = new Location("myLoc");
 	private LatLng nextGate = null;
 	private int score = 0;
 	double rHead = 0.3;
 	double rArms = 0.1;
 	double rLegs = 0.6;
-	
+	private Timer timer;
 	
 	private static final LatLng MARKER1 = new LatLng(49.8513, 8.63194);
 	private static final LatLng MARKER2 = new LatLng(49.8771, 8.65362);
@@ -83,6 +87,14 @@ OnMarkerClickListener, android.location.LocationListener{
 		add(new LatLng(49.8758, 8.6532));
 	}};
 	
+	class notInTime extends TimerTask {
+		@Override
+        public void run() {
+            inTime = false;
+            
+        }
+	}
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -104,10 +116,7 @@ OnMarkerClickListener, android.location.LocationListener{
 	        System.out.println("Provider " + provider + " has been selected.");
 	        onLocationChanged(location);
 	    }
-	    
 	    //showMarkersFromList();
-	    
-	   
 	}
 	
 	public void findNextGate() {
@@ -127,12 +136,19 @@ OnMarkerClickListener, android.location.LocationListener{
 			for(LatLng gate : tmpList) {
 				gateList.remove(gate);
 			}	
-		}	
+		}
 		
 		//show gate on map
 		map.addMarker(new MarkerOptions()
 		.position(nextGate)
 		.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+		
+		//reset timer
+		timer.cancel();
+		timer = new Timer();
+		timer.schedule(new notInTime(), DELAY);
+		//reset the helper variable
+		inTime = true;
 	}
 	
 	public ArrayList<LatLng> findNextGate(int stepToSearch) {
@@ -209,7 +225,7 @@ OnMarkerClickListener, android.location.LocationListener{
 		map.clear();
 	    addMarkersToMap(location);*/
 		
-		myLoc = location;		
+		myLoc = location;
 		//find next gate
 		double lat = location.getLatitude();
 		double lon = location.getLongitude();
@@ -222,19 +238,15 @@ OnMarkerClickListener, android.location.LocationListener{
 			findNextGate();
 		}else{
 			//nextGate reached? -> findNextgate
-			//nextGate reached in time
 			if(gateReached()) {
 				score = score + 100;
+				if (!inTime)
+					score = score / 2;
 				map.clear();
 				gateList.remove(nextGate);
 				findNextGate();
 			}
-			//nextGate reached after Time 
 		}
-		
-		
-				
-
 	}
 	
 	public boolean gateReached() {
