@@ -23,7 +23,9 @@ import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.Menu;
+import android.widget.Chronometer;
 import android.widget.Toast;
 
 public class GaterunActivity extends GenericActivity implements 
@@ -32,6 +34,7 @@ OnMarkerClickListener, android.location.LocationListener{
 	private LocationManager locationManager;
 	private String provider;
 	private GoogleMap map;
+	private Timer timer;
 	private static final int GATEDISTANCE = 50;
 	long DELAY = 10 * 1000;//180 secs
 	boolean inTime = true;
@@ -41,7 +44,9 @@ OnMarkerClickListener, android.location.LocationListener{
 	double rHead = 0.3;
 	double rArms = 0.1;
 	double rLegs = 0.6;
-	private Timer timer;
+	private Chronometer currentChronometer;
+	private Chronometer totalChronometer;
+	
 	
 	private static final LatLng MARKER1 = new LatLng(49.8513, 8.63194);
 	private static final LatLng MARKER2 = new LatLng(49.8771, 8.65362);
@@ -98,11 +103,15 @@ OnMarkerClickListener, android.location.LocationListener{
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_gaterun);
+		currentChronometer = (Chronometer) findViewById(R.id.chronometer1);
+		totalChronometer = (Chronometer) findViewById(R.id.chronometer2);
+		
 		
 		map = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map)).getMap();
 		map.setMyLocationEnabled(true);
 		map.setOnMarkerClickListener(this);
+	    map.getUiSettings().setMyLocationButtonEnabled(false);
 		
 		// Get the location manager
 	    locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -144,9 +153,13 @@ OnMarkerClickListener, android.location.LocationListener{
 		.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
 		
 		//reset timer
-		timer.cancel();
+		if(timer != null) {
+			timer.cancel();
+			currentChronometer.setBase(SystemClock.elapsedRealtime());
+		}		
 		timer = new Timer();
 		timer.schedule(new notInTime(), DELAY);
+		currentChronometer.start();
 		//reset the helper variable
 		inTime = true;
 	}
@@ -235,13 +248,19 @@ OnMarkerClickListener, android.location.LocationListener{
 		
 		//game started nextGate == null -> findNextGate
 		if(nextGate == null) {
+			totalChronometer.start();
 			findNextGate();
 		}else{
 			//nextGate reached? -> findNextgate
-			if(gateReached()) {
-				score = score + 100;
-				if (!inTime)
-					score = score / 2;
+			if(gateReached()) {				
+				if (!inTime) {
+					score = score + 50;
+					Toast.makeText(GaterunActivity.this, "50 points", Toast.LENGTH_LONG).show();
+				}
+				else {
+					score = score + 100;
+					Toast.makeText(GaterunActivity.this, "100 points", Toast.LENGTH_LONG).show();
+				}
 				map.clear();
 				gateList.remove(nextGate);
 				findNextGate();
