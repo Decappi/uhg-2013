@@ -36,9 +36,6 @@ public class ScoresActivity extends GenericActivity {
 			.append("Ping Pong", 	"28.07.13", 500)
 			.append("Ping Pong", 	"29.07.13", 100)
 			.append("Ping Pong", 	"30.07.13", 150)
-			.append("Gate Run", 	"28.07.13", 200)
-			.append("Gate Run", 	"29.07.13", 250)
-			.append("Gate Run", 	"30.07.13", 150)
 			.append("Frisbee", 		"28.07.13", 100)
 			.append("Frisbee", 		"29.07.13", 100)
 			.append("Frisbee", 		"30.07.13", 100);

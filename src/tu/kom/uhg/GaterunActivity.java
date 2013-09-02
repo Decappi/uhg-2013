@@ -31,12 +31,15 @@ import android.widget.Toast;
 public class GaterunActivity extends GenericActivity implements 
 OnMarkerClickListener, android.location.LocationListener{
 	
+	
 	private LocationManager locationManager;
 	private String provider;
 	private GoogleMap map;
 	private Timer timer;
-	private static final int GATEDISTANCE = 50;
-	long DELAY = 10 * 1000;//180 secs
+	private static final int GATEDISTANCE = 100;
+	private static final int GATETOLERANCE = 20;
+	
+	long DELAY = 180 * 1000;//180 secs
 	boolean inTime = true;
 	private Location myLoc = new Location("myLoc");
 	private LatLng nextGate = null;
@@ -274,7 +277,7 @@ OnMarkerClickListener, android.location.LocationListener{
 		loc.setLatitude(nextGate.latitude);
 		loc.setLongitude(nextGate.longitude);
 		
-		if (loc.distanceTo(myLoc) <= 5) {
+		if (loc.distanceTo(myLoc) <= GATETOLERANCE) {
 			return true;
 		}
 		return false;
