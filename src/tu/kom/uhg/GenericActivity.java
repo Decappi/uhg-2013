@@ -127,6 +127,11 @@ public class GenericActivity extends FragmentActivity {
 		prefsEditor.commit();
     }
     
+    public void showHint (String message) {
+    	Toast.makeText(this, message, Toast.LENGTH_LONG)
+		.show();
+    }
+    
 	public class Score {
 		public ArrayList<Game> games = new ArrayList<Game>();
 		public ArrayList<String> gameNames = new ArrayList<String>();

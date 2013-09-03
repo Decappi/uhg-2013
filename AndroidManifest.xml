@@ -50,6 +50,7 @@
         
         <activity android:name="tu.kom.uhg.QuizActivity" android:label="@string/app_name" android:theme="@android:style/Theme.Light.NoTitleBar"/>
         <activity android:name="tu.kom.uhg.GaterunActivity" android:label="@string/app_name" android:theme="@android:style/Theme.Light.NoTitleBar"/>
+        <activity android:name="tu.kom.uhg.ParkourActivity" android:label="@string/app_name" android:theme="@android:style/Theme.Light.NoTitleBar"/>
         
         <uses-library android:name="com.google.android.maps" />
         <meta-data
