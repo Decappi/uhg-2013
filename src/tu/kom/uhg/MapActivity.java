@@ -136,6 +136,7 @@ OnMarkerClickListener, android.location.LocationListener{
 		//if (loc1.distanceTo(myLoc) <= ACTIVATION_DISTANCE)
 			marker1 = map.addMarker(new MarkerOptions()
 			.position(MARKER1)
+			.title("quiz")
 	        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
 		
 		if (loc2.distanceTo(myLoc) <= ACTIVATION_DISTANCE)
