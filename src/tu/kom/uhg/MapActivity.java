@@ -29,6 +29,23 @@ OnMarkerClickListener, android.location.LocationListener{
 	private static final LatLng MARKER3 = new LatLng(49.8777, 8.6519);
 	private static final LatLng MARKER4 = new LatLng(49.8762, 8.65213);
 	private static final LatLng MARKER5 = new LatLng(49.8773, 8.65615);
+	
+	//Trimm-dich-Pfad A (11 Stages)
+	/*
+	private static final LatLng STAGEA1 = new LatLng(49.8513, 8.63194);
+	private static final LatLng STAGEA2 = new LatLng(49.8513, 8.63194);
+	private static final LatLng STAGEA3 = new LatLng(49.8513, 8.63194);
+	private static final LatLng STAGEA4 = new LatLng(49.8513, 8.63194);
+	private static final LatLng STAGEA5 = new LatLng(49.8513, 8.63194);
+	private static final LatLng STAGEA6 = new LatLng(49.8513, 8.63194);
+	private static final LatLng STAGEA7 = new LatLng(49.8513, 8.63194);
+	private static final LatLng STAGEA8 = new LatLng(49.8513, 8.63194);
+	private static final LatLng STAGEA9 = new LatLng(49.8513, 8.63194);
+	private static final LatLng STAGEA10 = new LatLng(49.8513, 8.63194);
+	private static final LatLng STAGEA11 = new LatLng(49.8513, 8.63194);
+	*/
+	//Trimm-dich-Pfad B (1 Stage, multiply tasks)
+	//private static final LatLng STAGEB1 = new LatLng(49.8513, 8.63194);
 
 	private Marker marker1;
 	private Marker marker2;
