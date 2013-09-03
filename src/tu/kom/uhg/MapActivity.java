@@ -179,7 +179,7 @@ OnMarkerClickListener, android.location.LocationListener{
 				}
 			});
 			//nein button
-			alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Nein", new DialogInterface.OnClickListener(){
+			alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Nein", new DialogInterface.OnClickListener(){
 
 				public void onClick(DialogInterface dialog, int which){
 					alertDialog.cancel();
@@ -225,7 +225,7 @@ OnMarkerClickListener, android.location.LocationListener{
 		LatLng target = new LatLng(lat, lon);
 		//move camera center to the current position
 		map.animateCamera(CameraUpdateFactory.newLatLng(target));
-		map.clear();
+		//map.clear();
 	    //addMarkersToMap(location);
 	}
 
