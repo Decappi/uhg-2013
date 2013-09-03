@@ -529,6 +529,44 @@
           "Answer": "Air"
         }
       ]
+    },
+    
+    {
+              "Question": "Choose the odd one out.",
+      "CorrectAnswer": 0,
+      "Answers": [
+        {
+          "Answer": "Dry"
+        },
+        {
+          "Answer": "Spring"
+        },
+        {
+          "Answer": "Summer"
+        },
+        {
+          "Answer": "Winter"
+        }
+      ]
+    },
+    
+        {
+              "Question": "Weight is measured in ",
+      "CorrectAnswer": 3,
+      "Answers": [
+        {
+          "Answer": "Yards"
+        },
+        {
+          "Answer": "Miles"
+        },
+        {
+          "Answer": "Gallons"
+        },
+        {
+          "Answer": "Pounds"
+        }
+      ]
     }
      ]
 }
