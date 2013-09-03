@@ -18,7 +18,6 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.Menu;
-import android.widget.Toast;
 
 public class MapActivity extends GenericActivity implements 
 OnMarkerClickListener, android.location.LocationListener{
@@ -45,18 +44,8 @@ OnMarkerClickListener, android.location.LocationListener{
 	private static final LatLng STAGEA9 = new LatLng(49.8786, 8.65078);
 	private static final LatLng STAGEA10 = new LatLng(49.8782, 8.65073);
 	private static final LatLng STAGEA11 = new LatLng(49.8778, 8.65066);
-	private Marker parkourA;
-	private Marker parkourA1;
-	private Marker parkourA2;
-	private Marker parkourA3;
-	private Marker parkourA4;
-	private Marker parkourA5;
-	private Marker parkourA6;
-	private Marker parkourA7;
-	private Marker parkourA8;
-	private Marker parkourA9;
-	private Marker parkourA10;
-	private Marker parkourA11;
+	
+	
 	
 
 	//Trimm-dich-Pfad B (1 Stage, multiply tasks)
@@ -66,12 +55,6 @@ OnMarkerClickListener, android.location.LocationListener{
 	
 	//Ruhepunkt B
 
-	private Marker marker1;
-	private Marker marker2;
-	private Marker marker3;
-	private Marker marker4;
-	private Marker marker5;
-	
 	Context context = this;
 	
 	@Override
@@ -105,7 +88,7 @@ OnMarkerClickListener, android.location.LocationListener{
 		Location parkourA_loc = new Location("ParkourA");
 		parkourA_loc.setLatitude(PARKOURA.latitude);
 		parkourA_loc.setLongitude(PARKOURA.longitude);
-		parkourA = map.addMarker(new MarkerOptions()
+		map.addMarker(new MarkerOptions()
 		.position(PARKOURA)
 		.title("Parkour A")
         .icon(BitmapDescriptorFactory.fromResource(R.drawable.activities_big)));
@@ -130,27 +113,26 @@ OnMarkerClickListener, android.location.LocationListener{
 		loc5.setLatitude(MARKER5.latitude);
 		loc5.setLongitude(MARKER5.longitude);
 		
-		//if (loc1.distanceTo(myLoc) <= ACTIVATION_DISTANCE)
-			marker1 = map.addMarker(new MarkerOptions()
+		map.addMarker(new MarkerOptions()
 			.position(MARKER1)
 	        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
 		
 		if (loc2.distanceTo(myLoc) <= ACTIVATION_DISTANCE)
-			marker2 = map.addMarker(new MarkerOptions()
+			map.addMarker(new MarkerOptions()
 	        .position(MARKER2)
 	        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
 		if (loc3.distanceTo(myLoc) <= ACTIVATION_DISTANCE)
-			marker3 = map.addMarker(new MarkerOptions()
+			map.addMarker(new MarkerOptions()
 	        .position(MARKER3)
 	        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
 		
 		if (loc4.distanceTo(myLoc) <= ACTIVATION_DISTANCE)
-			marker4 = map.addMarker(new MarkerOptions()
+			map.addMarker(new MarkerOptions()
 	        .position(MARKER4)
 	        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
 		
 		if (loc5.distanceTo(myLoc) <= ACTIVATION_DISTANCE)
-			marker5 = map.addMarker(new MarkerOptions()
+			map.addMarker(new MarkerOptions()
 	        .position(MARKER5)
 	        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
 	}
@@ -250,7 +232,7 @@ OnMarkerClickListener, android.location.LocationListener{
 		Location stageA1_loc = new Location("ParkourA1");
 		stageA1_loc.setLatitude(STAGEA1.latitude);
 		stageA1_loc.setLongitude(STAGEA1.longitude);
-		parkourA = map.addMarker(new MarkerOptions()
+		map.addMarker(new MarkerOptions()
 		.position(STAGEA1)
 		.title("Station 1")
         .icon(BitmapDescriptorFactory.fromResource(R.drawable.activities_small)));
@@ -258,7 +240,7 @@ OnMarkerClickListener, android.location.LocationListener{
 		Location stageA2_loc = new Location("ParkourA2");
 		stageA2_loc.setLatitude(STAGEA2.latitude);
 		stageA2_loc.setLongitude(STAGEA2.longitude);
-		parkourA = map.addMarker(new MarkerOptions()
+		map.addMarker(new MarkerOptions()
 		.position(STAGEA2)
 		.title("Station 2")
         .icon(BitmapDescriptorFactory.fromResource(R.drawable.activities_small)));
@@ -266,7 +248,7 @@ OnMarkerClickListener, android.location.LocationListener{
 		Location stageA3_loc = new Location("ParkourA3");
 		stageA3_loc.setLatitude(STAGEA3.latitude);
 		stageA3_loc.setLongitude(STAGEA3.longitude);
-		parkourA = map.addMarker(new MarkerOptions()
+		map.addMarker(new MarkerOptions()
 		.position(STAGEA3)
 		.title("Station 3")
         .icon(BitmapDescriptorFactory.fromResource(R.drawable.activities_small)));
@@ -274,7 +256,7 @@ OnMarkerClickListener, android.location.LocationListener{
 		Location stageA4_loc = new Location("ParkourA4");
 		stageA4_loc.setLatitude(STAGEA4.latitude);
 		stageA4_loc.setLongitude(STAGEA4.longitude);
-		parkourA = map.addMarker(new MarkerOptions()
+		map.addMarker(new MarkerOptions()
 		.position(STAGEA4)
 		.title("Station 4")
         .icon(BitmapDescriptorFactory.fromResource(R.drawable.activities_small)));
@@ -282,7 +264,7 @@ OnMarkerClickListener, android.location.LocationListener{
 		Location stageA5_loc = new Location("ParkourA5");
 		stageA5_loc.setLatitude(STAGEA5.latitude);
 		stageA5_loc.setLongitude(STAGEA5.longitude);
-		parkourA = map.addMarker(new MarkerOptions()
+		map.addMarker(new MarkerOptions()
 		.position(STAGEA5)
 		.title("Station 5")
         .icon(BitmapDescriptorFactory.fromResource(R.drawable.activities_small)));
@@ -290,7 +272,7 @@ OnMarkerClickListener, android.location.LocationListener{
 		Location stageA6_loc = new Location("ParkourA6");
 		stageA6_loc.setLatitude(STAGEA6.latitude);
 		stageA6_loc.setLongitude(STAGEA6.longitude);
-		parkourA = map.addMarker(new MarkerOptions()
+		map.addMarker(new MarkerOptions()
 		.position(STAGEA6)
 		.title("Station 6")
         .icon(BitmapDescriptorFactory.fromResource(R.drawable.activities_small)));
@@ -298,7 +280,7 @@ OnMarkerClickListener, android.location.LocationListener{
 		Location stageA7_loc = new Location("ParkourA7");
 		stageA7_loc.setLatitude(STAGEA7.latitude);
 		stageA7_loc.setLongitude(STAGEA7.longitude);
-		parkourA = map.addMarker(new MarkerOptions()
+		map.addMarker(new MarkerOptions()
 		.position(STAGEA7)
 		.title("Station 7")
         .icon(BitmapDescriptorFactory.fromResource(R.drawable.activities_small)));
@@ -306,7 +288,7 @@ OnMarkerClickListener, android.location.LocationListener{
 		Location stageA8_loc = new Location("ParkourA8");
 		stageA8_loc.setLatitude(STAGEA8.latitude);
 		stageA8_loc.setLongitude(STAGEA8.longitude);
-		parkourA = map.addMarker(new MarkerOptions()
+		map.addMarker(new MarkerOptions()
 		.position(STAGEA8)
 		.title("Station 8")
         .icon(BitmapDescriptorFactory.fromResource(R.drawable.activities_small)));
@@ -314,7 +296,7 @@ OnMarkerClickListener, android.location.LocationListener{
 		Location stageA9_loc = new Location("ParkourA9");
 		stageA9_loc.setLatitude(STAGEA9.latitude);
 		stageA9_loc.setLongitude(STAGEA9.longitude);
-		parkourA = map.addMarker(new MarkerOptions()
+		map.addMarker(new MarkerOptions()
 		.position(STAGEA9)
 		.title("Station 9")
         .icon(BitmapDescriptorFactory.fromResource(R.drawable.activities_small)));
@@ -322,7 +304,7 @@ OnMarkerClickListener, android.location.LocationListener{
 		Location stageA10_loc = new Location("ParkourA10");
 		stageA10_loc.setLatitude(STAGEA10.latitude);
 		stageA10_loc.setLongitude(STAGEA10.longitude);
-		parkourA = map.addMarker(new MarkerOptions()
+		map.addMarker(new MarkerOptions()
 		.position(STAGEA10)
 		.title("Station 10")
         .icon(BitmapDescriptorFactory.fromResource(R.drawable.activities_small)));
@@ -330,7 +312,7 @@ OnMarkerClickListener, android.location.LocationListener{
 		Location stageA11_loc = new Location("ParkourA11");
 		stageA11_loc.setLatitude(STAGEA11.latitude);
 		stageA11_loc.setLongitude(STAGEA11.longitude);
-		parkourA = map.addMarker(new MarkerOptions()
+		map.addMarker(new MarkerOptions()
 		.position(STAGEA11)
 		.title("Station 11")
         .icon(BitmapDescriptorFactory.fromResource(R.drawable.activities_small)));

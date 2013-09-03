@@ -8,23 +8,16 @@ import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.app.AlertDialog.Builder;
-
-import android.content.res.Resources;
 import android.graphics.Color;
-import android.os.Bundle;
 import android.widget.Button;
-import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -32,10 +25,7 @@ import android.widget.TableLayout;
 
 import android.util.Log;
 import android.view.View.OnClickListener;
-import android.view.Window;
-
 import android.view.View;
-import android.util.Log;
 
 public class QuizActivity extends GenericActivity {
 	

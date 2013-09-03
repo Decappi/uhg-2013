@@ -18,7 +18,6 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import android.content.Context;
-import android.content.Intent;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
@@ -51,19 +50,8 @@ OnMarkerClickListener, android.location.LocationListener{
 	private Chronometer totalChronometer;
 	
 	
-	private static final LatLng MARKER1 = new LatLng(49.8513, 8.63194);
-	private static final LatLng MARKER2 = new LatLng(49.8771, 8.65362);
-	private static final LatLng MARKER3 = new LatLng(49.8777, 8.6519);
-	private static final LatLng MARKER4 = new LatLng(49.8762, 8.65213);
-	private static final LatLng MARKER5 = new LatLng(49.8773, 8.65615);
-
-	private Marker marker1;
-	private Marker marker2;
-	private Marker marker3;
-	private Marker marker4;
-	private Marker marker5;
-	
 	//setting up the vantage points for the Herrngarten
+	@SuppressWarnings("serial")
 	private ArrayList<LatLng> gateList = new ArrayList<LatLng>() {{
 		add(new LatLng(49.8771, 8.65554));
 		add(new LatLng(49.8758, 8.6543));

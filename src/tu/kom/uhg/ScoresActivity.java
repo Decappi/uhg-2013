@@ -1,7 +1,5 @@
 package tu.kom.uhg;
 
-import java.util.ArrayList;
-
 import com.google.gson.Gson;
  
 import android.widget.ArrayAdapter;

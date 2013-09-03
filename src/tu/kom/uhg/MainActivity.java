@@ -2,7 +2,6 @@ package tu.kom.uhg;
 
 import tu.kom.uhg.R;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import tu.kom.uhg.GenericActivity;
