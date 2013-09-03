@@ -110,9 +110,6 @@ OnMarkerClickListener, android.location.LocationListener{
 		.title("Parkour A")
         .icon(BitmapDescriptorFactory.fromResource(R.drawable.activities_big)));
 		
-		
-		
-		
 		Location loc1 = new Location("Marker1");
 		loc1.setLatitude(MARKER1.latitude);
 		loc1.setLongitude(MARKER1.longitude);
@@ -187,11 +184,14 @@ OnMarkerClickListener, android.location.LocationListener{
 				}
 			});
 			alertDialog.show();
-		}
-		else {
-			Intent intent = new Intent(MapActivity.this, QuizActivity.class);
-			intent.putExtra("markerId", marker.getId());
+		} else if (marker.getTitle().subSequence(0, 7).equals("Station")) {
+			Intent intent = new Intent(MapActivity.this, ParkourActivity.class);
+			intent.putExtra("markerTitle", marker.getTitle());
 	        startActivity(intent);
+		} else {//TOOD FIXME
+			/*Intent intent = new Intent(MapActivity.this, QuizActivity.class);
+			intent.putExtra("markerId", marker.getId());
+	        startActivity(intent);*/
 		}
         
 		// We return false to indicate that we have not consumed the event and that we wish
@@ -226,8 +226,8 @@ OnMarkerClickListener, android.location.LocationListener{
 		LatLng target = new LatLng(lat, lon);
 		//move camera center to the current position
 		map.animateCamera(CameraUpdateFactory.newLatLng(target));
-		//map.clear();
-	    //addMarkersToMap(location);
+		/*map.clear();
+	    addMarkersToMap(location);*/
 	}
 
 	@Override
