@@ -57,8 +57,7 @@ public class MapActivity extends GenericActivity implements
 			add(createMarker(49.8762, 8.65472, PARKOUR_A,
 					R.drawable.activities_big));// Trimm-dich-Pfad A (11 Stages)
 			add(createMarker(49.8768, 8.65162, PARKOUR_B,
-					R.drawable.activities_big)); // Trimm-dich-Pfad B (1 Stage,
-													// multiply tasks)
+					R.drawable.activities_big)); // Trimm-dich-Pfad B (1 Stage, multiply tasks)
 			add(createMarker(49.8782, 8.65371, CHILLPOINT_1,
 					R.drawable.ruheplace_big)); // Ruhepunkt A
 			add(createMarker(49.878, 8.65105, CHILLPOINT_2,
@@ -169,7 +168,7 @@ public class MapActivity extends GenericActivity implements
 			showParkourExplanationForMarker(marker);
 		} else if (marker.getTitle().contains(CHILLPOINT)) {
 			showParkourExplanationForMarker(marker);
-		} else {// TOOD FIXME
+		} else {
 			startQuizActivity(marker);
 		}
 
@@ -182,7 +181,7 @@ public class MapActivity extends GenericActivity implements
 		return false;
 	}
 
-	private void startQuizActivity(final Marker marker) {
+	private void startQuizActivity(final Marker marker) {// TOOD FIXME
 		Intent intent = new Intent(MapActivity.this, QuizActivity.class);
 		intent.putExtra("markerId", marker.getId());
 		startActivity(intent);
