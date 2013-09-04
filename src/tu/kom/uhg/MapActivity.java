@@ -28,6 +28,7 @@ OnMarkerClickListener, android.location.LocationListener{
 	private LocationManager locationManager;
 	private String provider;
 	private GoogleMap map;
+	private boolean inGame;
 	private static final LatLng MARKER1 = new LatLng(49.8513, 8.63194);
 	private static final LatLng MARKER2 = new LatLng(49.8771, 8.65362);
 	private static final LatLng MARKER3 = new LatLng(49.8777, 8.6519);

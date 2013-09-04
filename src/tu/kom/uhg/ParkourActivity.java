@@ -201,7 +201,7 @@ public class ParkourActivity extends GenericActivity {
 			stationNumber = markerTitle.substring(11);			
 			viewSuffix = chillpoints2data.get(stationNumber)[0];
 			headerText = chillpoints2data.get(stationNumber)[1];
-			hintText = stations2data.get(stationNumber)[2];
+			hintText = chillpoints2data.get(stationNumber)[2];
 			mediaType = (viewSuffix.equals("video")) ? "mp4" : "png";
 			viewId = getResources().getIdentifier("layout/activity_parkour_"+viewSuffix, "xml", getPackageName());
 			mediaId = getResources().getIdentifier("raw/chillpoint"+stationNumber+viewSuffix, mediaType, getPackageName());	
