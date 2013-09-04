@@ -123,7 +123,7 @@ OnMarkerClickListener, android.location.LocationListener{
         .icon(BitmapDescriptorFactory.fromResource(R.drawable.ruheplace_big)));
 	}
 	
-	private void addMarkersToMap(Location myLoc) {		
+	private void manageRemovableMarkersOnMap(Location myLoc) {		
 		Location loc1 = new Location("Marker1");
 		loc1.setLatitude(MARKER1.latitude);
 		loc1.setLongitude(MARKER1.longitude);
@@ -144,33 +144,49 @@ OnMarkerClickListener, android.location.LocationListener{
 		loc5.setLatitude(MARKER5.latitude);
 		loc5.setLongitude(MARKER5.longitude);
 		
-		map.addMarker(new MarkerOptions()
-			.position(MARKER1)
-			.title("quizquiz")
-	        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+		removableMarkersList.add(
+				map.addMarker(new MarkerOptions()
+				.position(MARKER1)
+				.title("quizquiz")
+		        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))));
 		
-		if (loc2.distanceTo(myLoc) <= ACTIVATION_DISTANCE)
-			map.addMarker(new MarkerOptions()
-	        .position(MARKER2)
-	        .title("quizquiz")
-	        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+		if (loc2.distanceTo(myLoc) <= ACTIVATION_DISTANCE){
+			removableMarkersList.add(
+				map.addMarker(new MarkerOptions()
+		        .position(MARKER2)
+		        .title("quizquiz")
+		        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))));
+		}
 		if (loc3.distanceTo(myLoc) <= ACTIVATION_DISTANCE)
-			map.addMarker(new MarkerOptions()
-	        .position(MARKER3)
-	        .title("quizquiz")
-	        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+			removableMarkersList.add(
+				map.addMarker(new MarkerOptions()
+		        .position(MARKER3)
+		        .title("quizquiz")
+		        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))));
 		
 		if (loc4.distanceTo(myLoc) <= ACTIVATION_DISTANCE)
-			map.addMarker(new MarkerOptions()
-	        .position(MARKER4)
-	        .title("quizquiz")
-	        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+			removableMarkersList.add(
+				map.addMarker(new MarkerOptions()
+		        .position(MARKER4)
+		        .title("quizquiz")
+		        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))));
 		
 		if (loc5.distanceTo(myLoc) <= ACTIVATION_DISTANCE)
-			map.addMarker(new MarkerOptions()
-	        .position(MARKER5)
-	        .title("quizquiz")
-	        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+			removableMarkersList.add(
+				map.addMarker(new MarkerOptions()
+		        .position(MARKER5)
+		        .title("quizquiz")
+		        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))));
+		
+		for (Marker m : removableMarkersList){
+			Location markerLoc = new Location("dummy");
+			markerLoc.setLatitude(m.getPosition().latitude);
+			markerLoc.setLongitude(m.getPosition().longitude);
+			if (markerLoc.distanceTo(myLoc) >= ACTIVATION_DISTANCE)
+				m.setVisible(false);
+			else 
+				m.setVisible(true);
+		}
 	}
 	
 	@Override
@@ -272,8 +288,7 @@ OnMarkerClickListener, android.location.LocationListener{
 		//move camera center to the current position
 		map.animateCamera(CameraUpdateFactory.newLatLng(target));
 		//map.clear();
-		clearMapFromHidableMarkers();
-	    addMarkersToMap(location);
+	    manageRemovableMarkersOnMap(location);
 	}
 
 	@Override
@@ -288,11 +303,6 @@ OnMarkerClickListener, android.location.LocationListener{
 
 	@Override
 	public void onProviderDisabled(String provider) {
-	}
-	
-	private void clearMapFromHidableMarkers() {
-		map.clear();
-		addMarkersToMapOnCreate();
 	}
 	
 	private void startParkourA() {
