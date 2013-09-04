@@ -28,7 +28,6 @@ OnMarkerClickListener, android.location.LocationListener{
 	private LocationManager locationManager;
 	private String provider;
 	private GoogleMap map;
-	private boolean inGame;
 	private static final LatLng MARKER1 = new LatLng(49.8513, 8.63194);
 	private static final LatLng MARKER2 = new LatLng(49.8771, 8.65362);
 	private static final LatLng MARKER3 = new LatLng(49.8777, 8.6519);
@@ -88,92 +87,68 @@ OnMarkerClickListener, android.location.LocationListener{
 	}
 	
 	private void addMarkersToMapOnCreate() {
-		//Parkour A
-		Location parkourA_loc = new Location("ParkourA");
-		parkourA_loc.setLatitude(PARKOURA.latitude);
-		parkourA_loc.setLongitude(PARKOURA.longitude);
-		map.addMarker(new MarkerOptions()
-		.position(PARKOURA)
-		.title("Parkour A")
-        .icon(BitmapDescriptorFactory.fromResource(R.drawable.activities_big)));
-		//Parkour B
-		Location parkourB_loc = new Location("ParkourB");
-		parkourB_loc.setLatitude(PARKOURB.latitude);
-		parkourB_loc.setLongitude(PARKOURB.longitude);
-		map.addMarker(new MarkerOptions()
-		.position(PARKOURB)
-		.title("Parkour B")
-        .icon(BitmapDescriptorFactory.fromResource(R.drawable.activities_big)));
-		
-		//Chillpoint A
-		Location chillpointA_loc = new Location("ChillpointA");
-		chillpointA_loc.setLatitude(CHILLPOINTA.latitude);
-		chillpointA_loc.setLongitude(CHILLPOINTA.longitude);
-		map.addMarker(new MarkerOptions()
-		.position(CHILLPOINTA)
-		.title("Chillpoint 1")
-        .icon(BitmapDescriptorFactory.fromResource(R.drawable.ruheplace_big)));
-		//Chillpoint B
-		Location chillpointB_loc = new Location("ChillpointB");
-		chillpointB_loc.setLatitude(CHILLPOINTB.latitude);
-		chillpointB_loc.setLongitude(CHILLPOINTB.longitude);
-		map.addMarker(new MarkerOptions()
-		.position(CHILLPOINTB)
-		.title("Chillpoint 2")
-        .icon(BitmapDescriptorFactory.fromResource(R.drawable.ruheplace_big)));
+		addStartingMarkersToMap();
+		addHideableMarkersToMap();
 	}
 	
-	private void manageRemovableMarkersOnMap(Location myLoc) {		
-		Location loc1 = new Location("Marker1");
-		loc1.setLatitude(MARKER1.latitude);
-		loc1.setLongitude(MARKER1.longitude);
+	private void addStartingMarkersToMap() {
+		//Starting point of Parkour A
+		map.addMarker(new MarkerOptions()
+			.position(PARKOURA)
+			.title("Parkour A")
+	        .icon(BitmapDescriptorFactory.fromResource(R.drawable.activities_big)));
 		
-		Location loc2 = new Location("Marker2");
-		loc2.setLatitude(MARKER2.latitude);
-		loc2.setLongitude(MARKER2.longitude);
+		//Starting point of Parkour B
+		map.addMarker(new MarkerOptions()
+			.position(PARKOURB)
+			.title("Parkour B")
+	        .icon(BitmapDescriptorFactory.fromResource(R.drawable.activities_big)));
 		
-		Location loc3 = new Location("Marker3");
-		loc3.setLatitude(MARKER3.latitude);
-		loc3.setLongitude(MARKER3.longitude);
-		
-		Location loc4 = new Location("Marker4");
-		loc4.setLatitude(MARKER4.latitude);
-		loc4.setLongitude(MARKER4.longitude);
-		
-		Location loc5 = new Location("Marker5");
-		loc5.setLatitude(MARKER5.latitude);
-		loc5.setLongitude(MARKER5.longitude);
-		
+		//Chillpoint A
+		map.addMarker(new MarkerOptions()
+			.position(CHILLPOINTA)
+			.title("Chillpoint 1")
+	        .icon(BitmapDescriptorFactory.fromResource(R.drawable.ruheplace_big)));
+		//Chillpoint B
+		map.addMarker(new MarkerOptions()
+			.position(CHILLPOINTB)
+			.title("Chillpoint 2")
+	        .icon(BitmapDescriptorFactory.fromResource(R.drawable.ruheplace_big)));
+	}
+
+	private void addHideableMarkersToMap() {
 		removableMarkersList.add(
-				map.addMarker(new MarkerOptions()
+			map.addMarker(new MarkerOptions()
 				.position(MARKER1)
 				.title("quizquiz")
 		        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))));
 		
 		removableMarkersList.add(
-				map.addMarker(new MarkerOptions()
+			map.addMarker(new MarkerOptions()
 		        .position(MARKER2)
 		        .title("quizquiz")
 		        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))));
 		
 		removableMarkersList.add(
-				map.addMarker(new MarkerOptions()
+			map.addMarker(new MarkerOptions()
 		        .position(MARKER3)
 		        .title("quizquiz")
 		        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))));
 		
 		removableMarkersList.add(
-				map.addMarker(new MarkerOptions()
+			map.addMarker(new MarkerOptions()
 		        .position(MARKER4)
 		        .title("quizquiz")
 		        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))));
 
 		removableMarkersList.add(
-				map.addMarker(new MarkerOptions()
+			map.addMarker(new MarkerOptions()
 		        .position(MARKER5)
 		        .title("quizquiz")
 		        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))));
-		
+	}
+	
+	private void manageHideableMarkersOnMap(Location myLoc) {
 		for (Marker m : removableMarkersList){
 			Location markerLoc = new Location("dummy");
 			markerLoc.setLatitude(m.getPosition().latitude);
@@ -284,7 +259,7 @@ OnMarkerClickListener, android.location.LocationListener{
 		//move camera center to the current position
 		map.animateCamera(CameraUpdateFactory.newLatLng(target));
 		//map.clear();
-	    manageRemovableMarkersOnMap(location);
+	    manageHideableMarkersOnMap(location);
 	}
 
 	@Override
@@ -303,91 +278,58 @@ OnMarkerClickListener, android.location.LocationListener{
 	
 	private void startParkourA() {
 		//clear map
-		map.clear();		
+		map.clear();
 		//show Stages 1-11
-		Location stageA1_loc = new Location("ParkourA1");
-		stageA1_loc.setLatitude(STAGEA1.latitude);
-		stageA1_loc.setLongitude(STAGEA1.longitude);
 		map.addMarker(new MarkerOptions()
 		.position(STAGEA1)
 		.title("Station 1")
         .icon(BitmapDescriptorFactory.fromResource(R.drawable.activities_small)));
 		
-		Location stageA2_loc = new Location("ParkourA2");
-		stageA2_loc.setLatitude(STAGEA2.latitude);
-		stageA2_loc.setLongitude(STAGEA2.longitude);
 		map.addMarker(new MarkerOptions()
 		.position(STAGEA2)
 		.title("Station 2")
         .icon(BitmapDescriptorFactory.fromResource(R.drawable.activities_small)));
 		
-		Location stageA3_loc = new Location("ParkourA3");
-		stageA3_loc.setLatitude(STAGEA3.latitude);
-		stageA3_loc.setLongitude(STAGEA3.longitude);
 		map.addMarker(new MarkerOptions()
 		.position(STAGEA3)
 		.title("Station 3")
         .icon(BitmapDescriptorFactory.fromResource(R.drawable.activities_small)));
 		
-		Location stageA4_loc = new Location("ParkourA4");
-		stageA4_loc.setLatitude(STAGEA4.latitude);
-		stageA4_loc.setLongitude(STAGEA4.longitude);
 		map.addMarker(new MarkerOptions()
 		.position(STAGEA4)
 		.title("Station 4")
         .icon(BitmapDescriptorFactory.fromResource(R.drawable.activities_small)));
 		
-		Location stageA5_loc = new Location("ParkourA5");
-		stageA5_loc.setLatitude(STAGEA5.latitude);
-		stageA5_loc.setLongitude(STAGEA5.longitude);
 		map.addMarker(new MarkerOptions()
 		.position(STAGEA5)
 		.title("Station 5")
         .icon(BitmapDescriptorFactory.fromResource(R.drawable.activities_small)));
 		
-		Location stageA6_loc = new Location("ParkourA6");
-		stageA6_loc.setLatitude(STAGEA6.latitude);
-		stageA6_loc.setLongitude(STAGEA6.longitude);
 		map.addMarker(new MarkerOptions()
 		.position(STAGEA6)
 		.title("Station 6")
         .icon(BitmapDescriptorFactory.fromResource(R.drawable.activities_small)));
 		
-		Location stageA7_loc = new Location("ParkourA7");
-		stageA7_loc.setLatitude(STAGEA7.latitude);
-		stageA7_loc.setLongitude(STAGEA7.longitude);
 		map.addMarker(new MarkerOptions()
 		.position(STAGEA7)
 		.title("Station 7")
         .icon(BitmapDescriptorFactory.fromResource(R.drawable.activities_small)));
 		
-		Location stageA8_loc = new Location("ParkourA8");
-		stageA8_loc.setLatitude(STAGEA8.latitude);
-		stageA8_loc.setLongitude(STAGEA8.longitude);
 		map.addMarker(new MarkerOptions()
 		.position(STAGEA8)
 		.title("Station 8")
         .icon(BitmapDescriptorFactory.fromResource(R.drawable.activities_small)));
 		
-		Location stageA9_loc = new Location("ParkourA9");
-		stageA9_loc.setLatitude(STAGEA9.latitude);
-		stageA9_loc.setLongitude(STAGEA9.longitude);
 		map.addMarker(new MarkerOptions()
 		.position(STAGEA9)
 		.title("Station 9")
         .icon(BitmapDescriptorFactory.fromResource(R.drawable.activities_small)));
-		
-		Location stageA10_loc = new Location("ParkourA10");
-		stageA10_loc.setLatitude(STAGEA10.latitude);
-		stageA10_loc.setLongitude(STAGEA10.longitude);
+
 		map.addMarker(new MarkerOptions()
 		.position(STAGEA10)
 		.title("Station 10")
         .icon(BitmapDescriptorFactory.fromResource(R.drawable.activities_small)));
-		
-		Location stageA11_loc = new Location("ParkourA11");
-		stageA11_loc.setLatitude(STAGEA11.latitude);
-		stageA11_loc.setLongitude(STAGEA11.longitude);
+	
 		map.addMarker(new MarkerOptions()
 		.position(STAGEA11)
 		.title("Station 11")
