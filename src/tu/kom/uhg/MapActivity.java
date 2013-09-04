@@ -1,5 +1,8 @@
 package tu.kom.uhg;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
@@ -45,17 +48,18 @@ OnMarkerClickListener, android.location.LocationListener{
 	private static final LatLng STAGEA10 = new LatLng(49.8782, 8.65073);
 	private static final LatLng STAGEA11 = new LatLng(49.8778, 8.65066);
 	
-	
-	
-
 	//Trimm-dich-Pfad B (1 Stage, multiply tasks)
-	//private static final LatLng STAGEB1 = new LatLng(49.8513, 8.63194);
+	private static final LatLng PARKOURB = new LatLng(49.8768, 8.65162);
 	
 	//Ruhepunkt A
-	
+	private static final LatLng CHILLPOINTA = new LatLng(49.8782, 8.65371);
 	//Ruhepunkt B
+	private static final LatLng CHILLPOINTB = new LatLng(49.878, 8.65105);
 
 	Context context = this;
+	
+	//removable markers- quiz, info etc (not finished)
+	List<Marker> removableMarkersList = new ArrayList<Marker>();
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -79,11 +83,10 @@ OnMarkerClickListener, android.location.LocationListener{
 	        onLocationChanged(location);
 	    }
 	    
-	    addMarkersToMap(location);
+	    addMarkersToMapOnCreate();
 	}
 	
-	private void addMarkersToMap(Location myLoc) {
-		//Parkours
+	private void addMarkersToMapOnCreate() {
 		//Parkour A
 		Location parkourA_loc = new Location("ParkourA");
 		parkourA_loc.setLatitude(PARKOURA.latitude);
@@ -92,7 +95,34 @@ OnMarkerClickListener, android.location.LocationListener{
 		.position(PARKOURA)
 		.title("Parkour A")
         .icon(BitmapDescriptorFactory.fromResource(R.drawable.activities_big)));
+		//Parkour B
+		Location parkourB_loc = new Location("ParkourB");
+		parkourB_loc.setLatitude(PARKOURB.latitude);
+		parkourB_loc.setLongitude(PARKOURB.longitude);
+		map.addMarker(new MarkerOptions()
+		.position(PARKOURB)
+		.title("Parkour B")
+        .icon(BitmapDescriptorFactory.fromResource(R.drawable.activities_big)));
 		
+		//Chillpoint A
+		Location chillpointA_loc = new Location("ChillpointA");
+		chillpointA_loc.setLatitude(CHILLPOINTA.latitude);
+		chillpointA_loc.setLongitude(CHILLPOINTA.longitude);
+		map.addMarker(new MarkerOptions()
+		.position(CHILLPOINTA)
+		.title("Chillpoint 1")
+        .icon(BitmapDescriptorFactory.fromResource(R.drawable.ruheplace_big)));
+		//Chillpoint B
+		Location chillpointB_loc = new Location("ChillpointB");
+		chillpointB_loc.setLatitude(CHILLPOINTB.latitude);
+		chillpointB_loc.setLongitude(CHILLPOINTB.longitude);
+		map.addMarker(new MarkerOptions()
+		.position(CHILLPOINTB)
+		.title("Chillpoint 2")
+        .icon(BitmapDescriptorFactory.fromResource(R.drawable.ruheplace_big)));
+	}
+	
+	private void addMarkersToMap(Location myLoc) {		
 		Location loc1 = new Location("Marker1");
 		loc1.setLatitude(MARKER1.latitude);
 		loc1.setLongitude(MARKER1.longitude);
@@ -115,26 +145,30 @@ OnMarkerClickListener, android.location.LocationListener{
 		
 		map.addMarker(new MarkerOptions()
 			.position(MARKER1)
-			.title("quiz")
+			.title("quizquiz")
 	        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
 		
 		if (loc2.distanceTo(myLoc) <= ACTIVATION_DISTANCE)
 			map.addMarker(new MarkerOptions()
 	        .position(MARKER2)
+	        .title("quizquiz")
 	        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
 		if (loc3.distanceTo(myLoc) <= ACTIVATION_DISTANCE)
 			map.addMarker(new MarkerOptions()
 	        .position(MARKER3)
+	        .title("quizquiz")
 	        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
 		
 		if (loc4.distanceTo(myLoc) <= ACTIVATION_DISTANCE)
 			map.addMarker(new MarkerOptions()
 	        .position(MARKER4)
+	        .title("quizquiz")
 	        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
 		
 		if (loc5.distanceTo(myLoc) <= ACTIVATION_DISTANCE)
 			map.addMarker(new MarkerOptions()
 	        .position(MARKER5)
+	        .title("quizquiz")
 	        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
 	}
 	
@@ -166,14 +200,42 @@ OnMarkerClickListener, android.location.LocationListener{
 				}
 			});
 			alertDialog.show();
+		} else if(marker.getTitle().equals("Parkour B")){
+			final AlertDialog alertDialog;
+			alertDialog = new AlertDialog.Builder(MapActivity.this).create();
+			alertDialog.setTitle("Trimm-dich-Pfad");
+			alertDialog.setMessage("Der Rückenfit Parkour bietet dir ein gezieltes Training " +
+					"für den vom Bürostuhl gestressten Rücken. \nParkour starten?");
+			//ja button
+			alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Ja", new DialogInterface.OnClickListener(){
+					
+				public void onClick(DialogInterface dialog, int which) {
+					//Parkour B will be played only on one place, so no additional markers needed
+					Intent intent = new Intent(MapActivity.this, ParkourActivity.class);
+					intent.putExtra("markerTitle", marker.getTitle());
+			        startActivity(intent);
+				}
+			});
+			//nein button
+			alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Nein", new DialogInterface.OnClickListener(){
+
+				public void onClick(DialogInterface dialog, int which){
+					alertDialog.cancel();
+				}
+			});
+			alertDialog.show();
 		} else if (marker.getTitle().subSequence(0, 7).equals("Station")) {
 			Intent intent = new Intent(MapActivity.this, ParkourActivity.class);
 			intent.putExtra("markerTitle", marker.getTitle());
 	        startActivity(intent);
+		} else if (marker.getTitle().contains("Chillpoint"))  {
+			Intent intent = new Intent(MapActivity.this, ParkourActivity.class);
+			intent.putExtra("markerTitle", marker.getTitle());
+	        startActivity(intent);
 		} else {//TOOD FIXME
-			/*Intent intent = new Intent(MapActivity.this, QuizActivity.class);
+			Intent intent = new Intent(MapActivity.this, QuizActivity.class);
 			intent.putExtra("markerId", marker.getId());
-	        startActivity(intent);*/
+	        startActivity(intent);
 		}
         
 		// We return false to indicate that we have not consumed the event and that we wish
@@ -208,8 +270,9 @@ OnMarkerClickListener, android.location.LocationListener{
 		LatLng target = new LatLng(lat, lon);
 		//move camera center to the current position
 		map.animateCamera(CameraUpdateFactory.newLatLng(target));
-		/*map.clear();
-	    addMarkersToMap(location);*/
+		//map.clear();
+		clearMapFromHidableMarkers();
+	    addMarkersToMap(location);
 	}
 
 	@Override
@@ -224,6 +287,11 @@ OnMarkerClickListener, android.location.LocationListener{
 
 	@Override
 	public void onProviderDisabled(String provider) {
+	}
+	
+	private void clearMapFromHidableMarkers() {
+		map.clear();
+		addMarkersToMapOnCreate();
 	}
 	
 	private void startParkourA() {

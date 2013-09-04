@@ -1,532 +1,76 @@
 {
   "Questions": [
     {
-      "Question": "Which animal is Carnivorous?",
-      "CorrectAnswer": 1,
+      "Question": "Wie viele Studenten studieren an der TU Darmstadt?",
+      "CorrectAnswer": 2,
       "Answers": [
         {
-          "Answer": "Cow"
+          "Answer": "5.000"
         },
         {
-          "Answer": "Lion"
+          "Answer": "15.000"
         },
         {
-          "Answer": "Goat"
+          "Answer": "25.000"
         },
         {
-          "Answer": "Elephant"
+          "Answer": "50.000"
         }
       ]
     },
     {
-      "Question": "Humans need",
+      "Question": "Wann wurde die TU Darmstadt gegründet?",
       "CorrectAnswer": 0,
       "Answers": [
         {
-          "Answer": "Oxygen"
+          "Answer": "1877"
         },
         {
-          "Answer": "Nitrogen"
+          "Answer": "1903"
         },
         {
-          "Answer": "CarbonDioxide"
+          "Answer": "1928"
         },
         {
-          "Answer": "Hydrogen"
+          "Answer": "1960"
         }
       ]
     },
     
         {
-      "Question": "Choose the Amphibian ",
+      "Question": "Welche dieser bekannten Persönlichkeiten studierten an der TUD?",
       "CorrectAnswer": 0,
       "Answers": [
         {
-          "Answer": "Frog"
+          "Answer": "El Lissitzky, Fritz von Opel, Hans Zacher"
         },
         {
-          "Answer": "Owl"
+          "Answer": "Ernst Neufert, Jochen Partsch, Heinrich von Brentano"
         },
         {
-          "Answer": "Goat"
+          "Answer": "Albrecht Ohly, Karl-Heinz-Böhm, Justus von Liebig"
         },
         {
-          "Answer": "Fox"
+          "Answer": "Du"
         }
       ]
     },
     
         {
-      "Question": "---- is part of Earth`s Atmosphere.",
-      "CorrectAnswer": 1,
-      "Answers": [
-        {
-          "Answer": "Unisphere"
-        },
-        {
-          "Answer": "Troposphere"
-        },
-        {
-          "Answer": "Oxysphere"
-        },
-        {
-          "Answer": "Carbosphere"
-        }
-      ]
-    },
-    
-           {
-      "Question": "Which part of Bird`s body does Plumage refer to?",
+      "Question": "Welcher Fachbereich ist der kleinste Fachbereich an der TUDarmstadt mit ca. 657 Studenten im vergangen Jahr",
       "CorrectAnswer": 0,
       "Answers": [
         {
-          "Answer": "Feathers"
+          "Answer": "Biologie"
         },
         {
-          "Answer": "Legs"
+          "Answer": "Material- und Geowissenschaften"
         },
         {
-          "Answer": "Eggs"
+          "Answer": "Physik"
         },
         {
-          "Answer": "Skin"
-        }
-      ]
-    },
-    
-      {
-      "Question": "Temperature is measured in ",
-      "CorrectAnswer": 2,
-      "Answers": [
-        {
-          "Answer": "Pounds"
-        },
-        {
-          "Answer": "Ounces"
-        },
-        {
-          "Answer": "Farenheit"
-        },
-        {
-          "Answer": "Yards"
-        }
-      ]
-    },
-    
-          {
-      "Question": "Which part of the Plant contains Chlorophyll?",
-      "CorrectAnswer": 3,
-      "Answers": [
-        {
-          "Answer": "Stem"
-        },
-        {
-          "Answer": "Root"
-        },
-        {
-          "Answer": "Flower"
-        },
-        {
-          "Answer": "Leaf"
-        }
-      ]
-    },
-    
-     {
-      "Question": "---- is the process by which water vapor changes into liquid water.",
-      "CorrectAnswer": 1,
-      "Answers": [
-        {
-          "Answer": "Circulation"
-        },
-        {
-          "Answer": "Condensation"
-        },
-        {
-          "Answer": "Evaporation"
-        },
-        {
-          "Answer": "Stimulation"
-        }
-      ]
-    },
-    
-         {
-      "Question": "Land that is very dry and has very less water is called as ?",
-      "CorrectAnswer": 0,
-      "Answers": [
-        {
-          "Answer": "Desert"
-        },
-        {
-          "Answer": "Coast"
-        },
-        {
-          "Answer": "Plain"
-        },
-        {
-          "Answer": "Valley"
-        }
-      ]
-    },
-    
-             {
-      "Question": "During Drought period there is ",
-      "CorrectAnswer": 1,
-      "Answers": [
-        {
-          "Answer": "lots of rain"
-        },
-        {
-          "Answer": "no rain"
-        },
-        {
-          "Answer": "lots of snow"
-        },
-        {
-          "Answer": "heavy flood"
-        }
-      ]
-    },
-    
-                 {
-      "Question": "Human body obtains its energy from ",
-      "CorrectAnswer": 1,
-      "Answers": [
-        {
-          "Answer": "Sand"
-        },
-        {
-          "Answer": "Carbohydrates"
-        },
-        {
-          "Answer": "Hydrogen"
-        },
-        {
-          "Answer": "Air"
-        }
-      ]
-    },
-    
-     {
-      "Question": "---- is the process by which liquid water changes into a water vapor?",
-      "CorrectAnswer": 2,
-      "Answers": [
-        {
-          "Answer": "Circulation"
-        },
-        {
-          "Answer": "Condensation"
-        },
-        {
-          "Answer": "Evaporation"
-        },
-        {
-          "Answer": "Stimulation"
-        }
-      ]
-    },
-    
-    {
-      "Question": "---- breathes through gills.",
-      "CorrectAnswer": 2,
-      "Answers": [
-        {
-          "Answer": "Dog"
-        },
-        {
-          "Answer": "Cat"
-        },
-        {
-          "Answer": "Fish"
-        },
-        {
-          "Answer": "Duck"
-        }
-      ]
-    },
-    
-    {
-      "Question": "The process of food cycle from one living thing to another is called ",
-      "CorrectAnswer": 3,
-      "Answers": [
-        {
-          "Answer": "Food Path"
-        },
-        {
-          "Answer": "Food Store"
-        },
-        {
-          "Answer": "Food Cycle"
-        },
-        {
-          "Answer": "Food Chain"
-        }
-      ]
-    },
-    
-        {
-      "Question": "---- denotes the resource that comes from remains of plants and animals.",
-      "CorrectAnswer": 2,
-      "Answers": [
-        {
-          "Answer": "Energy Fuel"
-        },
-        {
-          "Answer": "Chemical Fuel"
-        },
-        {
-          "Answer": "Fossil Fuel"
-        },
-        {
-          "Answer": "Bio Fuel"
-        }
-      ]
-    },
-    
-            {
-      "Question": "which of the following doesnt have its own shape or volume?",
-      "CorrectAnswer": 2,
-      "Answers": [
-        {
-          "Answer": "Solid"
-        },
-        {
-          "Answer": "Sand"
-        },
-        {
-          "Answer": "Gas"
-        },
-        {
-          "Answer": "Ice"
-        }
-      ]
-    },
-    
-    {
-      "Question": "Choose the herbivore.",
-      "CorrectAnswer": 1,
-      "Answers": [
-        {
-          "Answer": "Fish"
-        },
-        {
-          "Answer": "Deer"
-        },
-        {
-          "Answer": "Tiger"
-        },
-        {
-          "Answer": "Lion"
-        }
-      ]
-    },
-    
-        {
-      "Question": "Lunar eclipse occurs when --- blocks light from --- from reaching ---.",
-      "CorrectAnswer": 2,
-      "Answers": [
-        {
-          "Answer": "Moon,Earth,Sun"
-        },
-        {
-          "Answer": "Sun,Moon,Earth"
-        },
-        {
-          "Answer": "Earth,Sun,Moon"
-        },
-        {
-          "Answer": "Moon,Earth,Sun"
-        }
-      ]
-    },
-    
-     {
-      "Question": "Magnets are attracted to ----.",
-      "CorrectAnswer": 2,
-      "Answers": [
-        {
-          "Answer": "Steel"
-        },
-        {
-          "Answer": "Coal"
-        },
-        {
-          "Answer": "Iron"
-        },
-        {
-          "Answer": "Ice"
-        }
-      ]
-    },
-    
-       {
-      "Question": "Which item among the following is not a natural resource?",
-      "CorrectAnswer": 0,
-      "Answers": [
-        {
-          "Answer": "Bread"
-        },
-        {
-          "Answer": "Oil"
-        },
-        {
-          "Answer": "Water"
-        },
-        {
-          "Answer": "Fish"
-        }
-      ]
-    },
-    
-           {
-      "Question": "Vehicles cause --- pollution.",
-      "CorrectAnswer": 1,
-      "Answers": [
-        {
-          "Answer": "Water"
-        },
-        {
-          "Answer": "Air"
-        },
-        {
-          "Answer": "Soil"
-        },
-        {
-          "Answer": "Fire"
-        }
-      ]
-    },
-    
-               {
-      "Question": "Choose the renewable resource.",
-      "CorrectAnswer": 3,
-      "Answers": [
-        {
-          "Answer": "Gold"
-        },
-        {
-          "Answer": "Coal"
-        },
-        {
-          "Answer": "Diesel"
-        },
-        {
-          "Answer": "Solar Power"
-        }
-      ]
-    },
-    
-                   {
-      "Question": "---- is a reptile.",
-      "CorrectAnswer": 3,
-      "Answers": [
-        {
-          "Answer": "Cat"
-        },
-        {
-          "Answer": "Dog"
-        },
-        {
-          "Answer": "Tiger"
-        },
-        {
-          "Answer": "Crocodile"
-        }
-      ]
-    },
-    
-                       {
-      "Question": "Solar System consists of ",
-      "CorrectAnswer": 3,
-      "Answers": [
-        {
-          "Answer": "Sun,Moon"
-        },
-        {
-          "Answer": "Planets"
-        },
-        {
-          "Answer": "Sun,Planets"
-        },
-        {
-          "Answer": "Sun,Planets,Moons"
-        }
-      ]
-    },
-    
-                           {
-      "Question": "---- is a solid.",
-      "CorrectAnswer": 3,
-      "Answers": [
-        {
-          "Answer": "Water"
-        },
-        {
-          "Answer": "Oil"
-        },
-        {
-          "Answer": "Oxygen"
-        },
-        {
-          "Answer": "Rock"
-        }
-      ]
-    },
-    
-    {
-              "Question": "Thermometers are used to measure ",
-      "CorrectAnswer": 0,
-      "Answers": [
-        {
-          "Answer": "Temperature"
-        },
-        {
-          "Answer": "Weight"
-        },
-        {
-          "Answer": "Volume"
-        },
-        {
-          "Answer": "Power"
-        }
-      ]
-    },
-    
-    {
-              "Question": "Low lying land sorrounded by mountains is called ",
-      "CorrectAnswer": 3,
-      "Answers": [
-        {
-          "Answer": "Plain"
-        },
-        {
-          "Answer": "Hill"
-        },
-        {
-          "Answer": "Stream"
-        },
-        {
-          "Answer": "Valley"
-        }
-      ]
-    },
-    
-     {
-              "Question": "What flows out of Volcanoes ",
-      "CorrectAnswer": 0,
-      "Answers": [
-        {
-          "Answer": "Lava"
-        },
-        {
-          "Answer": "Water"
-        },
-        {
-          "Answer": "Oil"
-        },
-        {
-          "Answer": "Air"
+          "Answer": "Informatik"
         }
       ]
     }

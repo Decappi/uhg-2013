@@ -4,11 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <ImageView
-        android:id="@+id/picture1"
+    <VideoView
+        android:id="@+id/video1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/activities_big" />
+        android:layout_weight="1"
+        android:adjustViewBounds="true"
+        android:maxHeight="200dp" />
 
     <TextView
         android:id="@+id/header"
@@ -34,6 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.18"
+            android:onClick="finisher"
             android:text="Finish" />
  
     </LinearLayout>

@@ -1,17 +1,22 @@
 package tu.kom.uhg;
 
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import android.net.Uri;
 import android.os.Bundle;
 
 import java.util.HashMap;
 import android.widget.ImageView;
+import android.widget.MediaController;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import android.view.View;
 
 public class ParkourActivity extends GenericActivity {
 	
 	@SuppressWarnings("serial")
-	HashMap<String, String[]> markers2types = new HashMap<String, String[]>(){{
+	HashMap<String, String[]> stations2data = new HashMap<String, String[]>(){{
 		put("1", new String[] {
 				"video", 
 				"Steps", 
@@ -69,26 +74,139 @@ public class ParkourActivity extends GenericActivity {
 		});
 	}};
 	
+	//hashmap for Chillpoints
+	@SuppressWarnings("serial")
+	HashMap<String, String[]> chillpoints2data = new HashMap<String, String[]>(){{
+		put("1", new String[] {
+				"image", 
+				"Mundraub", 
+				"Um zu neuen Kräften zu kommen bist du hier genau richtig. Die Apfelbäume laden zum Ernten und Verzehr ein, die Bänke bieten dir Sitzmöglichkeiten für eine angenehme Auszeit.",
+		});
+		put("2", new String[] {
+				"image", 
+				"Weiher", 
+				"Im Herrngarten gibt es kaum einen idyllischeren Ort als den Weiher um sich zwischen Luft, Natur und Wasser gut zu erholen.",
+		});
+	}};
+	@SuppressWarnings("serial")
+	HashMap<String, String[]> parkourb2data = new HashMap<String, String[]>(){{
+		put("1", new String[] {
+				"video", 
+				"Aufwärmen 1", 
+				"Der Rücken wird durch das Rotieren der angewinkelteten Arme um die Körperachse aufgewärmt. 10 Wiederholungen.",
+		});
+		put("2", new String[] {
+				"video", 
+				"Aufwärmen 2", 
+				"Ergänzend zur ersten Übung wird das Aufwärmen durch das strecken der Arme bei gerundetem Rücken beendet. 10 Wiederholungen.",
+		});
+		put("3", new String[] {
+				"video", 
+				"Schieben und Ziehen", 
+				"In der Grundposition (Beine Hüftbreit auseinander, Gesäß nach hinten und Rücken Gerade nach vorne gestreckt) wird das Schieben und Ziehen eines Gegenstandes simultiert. 15 Wiederholungen.",
+		});
+		put("4", new String[] {
+				"video", 
+				"Schwimmen", 
+				"In der Grundposition (Beine Hüftbreit auseinander, Gesäß nach hinten und Rücken Gerade nach vorne gestreckt) werden beide Arme nach vorne gestreckt und gegensätzlich zueinander nach oben/unten gehoben. 20 Wiederholungen.",
+		});
+		put("5", new String[] {
+				"video", 
+				"Körperneigen", 
+				"In der Grundposition (Beine Hüftbreit auseinander, Gesäß nach hinten und Rücken Gerade nach vorne gestreckt) wird der Körper nach unten und zurück in die Startposition gehoben. 15 Wiederholungen.",
+		});
+		put("6", new String[] {
+				"video", 
+				"Rotation", 
+				"In der Grundposition (Beine Hüftbreit auseinander, Gesäß nach hinten und Rücken Gerade nach vorne gestreckt) wird der Oberkörper nach unten gesenkt. Die Arme werden senkrecht zum Körper nach oben gehalten und der Oberkörper rotiert. 15 Wiederholungen pro Seite.",
+		});
+	}};
+	
 	String viewSuffix;
 	String markerTitle;
 	String stationNumber;
 	String mediaType;
 	String headerText;
 	String hintText;
+	int mediaId;
+	int viewId;
+	int slideNmbr;
 	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		Bundle extras = getIntent().getExtras();
 		markerTitle = extras.getString("markerTitle");
-		stationNumber = markerTitle.substring(8);
-		viewSuffix = markers2types.get(stationNumber)[0];
-		headerText = markers2types.get(stationNumber)[1];
-		hintText = markers2types.get(stationNumber)[2];
-		mediaType = (viewSuffix.equals("video")) ? "mp4" : "png";
 		
-		int viewId = getResources().getIdentifier("layout/activity_parkour_"+viewSuffix, "xml", getPackageName());
-		int mediaId = getResources().getIdentifier("raw/parkour_a_station"+stationNumber+viewSuffix, mediaType, getPackageName());
+		if (markerTitle.equals("Parkour B")){			
+			showParkourWithMultipleMedia();
+		} else {
+			showParkourWithSingleMedia();
+		}
+		
+		
+	}
+	
+	private void showParkourWithMultipleMedia() {
+		// TODO Auto-generated method stub
+		showHint("Parkour B");	
+		setContentView(R.layout.activity_parkour_slideshow);
+		slideNmbr = 1;
+		showSlide();
+	}
+	
+	
+
+	private void showSlide() {
+		// TODO Auto-generated method stub
+		//slideNmbr to string
+		String slideNmbr_string =  String.valueOf(slideNmbr);
+		viewSuffix = parkourb2data.get(slideNmbr_string)[0];
+		headerText = parkourb2data.get(slideNmbr_string)[1];
+		hintText = parkourb2data.get(slideNmbr_string)[2];	
+		mediaType = (viewSuffix.equals("video")) ? "mp4" : "png";
+		mediaId = getResources().getIdentifier("raw/parkour_b_"+slideNmbr_string+viewSuffix, mediaType, getPackageName());
+
+		TextView hintTextView = (TextView)findViewById(R.id.hint);
+		TextView headerTextView = (TextView)findViewById(R.id.header);
+		
+		hintTextView.setText(hintText);
+		headerTextView.setText(headerText);
+		
+		VideoView video = (VideoView)findViewById(R.id.video1);
+		Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+mediaId);
+		
+		video.setVideoURI(uri);
+		video.start();
+		
+		video.setOnPreparedListener (new OnPreparedListener() {                    
+		    @Override
+		    public void onPrepared(MediaPlayer mp) {
+		        mp.setLooping(true);
+		    }
+		});
+	}
+
+	private void showParkourWithSingleMedia() {
+		
+		if(markerTitle.contains("Station")) {
+			stationNumber = markerTitle.substring(8);					
+			viewSuffix = stations2data.get(stationNumber)[0];
+			headerText = stations2data.get(stationNumber)[1];
+			hintText = stations2data.get(stationNumber)[2];	
+			mediaType = (viewSuffix.equals("video")) ? "mp4" : "png";
+			viewId = getResources().getIdentifier("layout/activity_parkour_"+viewSuffix, "xml", getPackageName());
+			mediaId = getResources().getIdentifier("raw/parkour_a_station"+stationNumber+viewSuffix, mediaType, getPackageName());
+		} else if(markerTitle.contains("Chillpoint"))  {
+			stationNumber = markerTitle.substring(11);			
+			viewSuffix = chillpoints2data.get(stationNumber)[0];
+			headerText = chillpoints2data.get(stationNumber)[1];
+			hintText = stations2data.get(stationNumber)[2];
+			mediaType = (viewSuffix.equals("video")) ? "mp4" : "png";
+			viewId = getResources().getIdentifier("layout/activity_parkour_"+viewSuffix, "xml", getPackageName());
+			mediaId = getResources().getIdentifier("raw/chillpoint"+stationNumber+viewSuffix, mediaType, getPackageName());	
+		}
+		
 		setContentView(viewId);
 		
 		TextView hintTextView = (TextView)findViewById(R.id.hint);
@@ -96,17 +214,43 @@ public class ParkourActivity extends GenericActivity {
 		
 		hintTextView.setText(hintText);
 		headerTextView.setText(headerText);
-		
+			
 		if (viewSuffix.equals("image")){
 			ImageView image = (ImageView)findViewById(R.id.picture1);
 			image.setImageResource(mediaId);
 		} else if (viewSuffix.equals("video")){
-			showHint("not implemented yet");
+			VideoView video = (VideoView)findViewById(R.id.video1);
+			Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+mediaId);
+			
+			video.setVideoURI(uri);
+			video.start();
+			
+			video.setOnPreparedListener (new OnPreparedListener() {                    
+			    @Override
+			    public void onPrepared(MediaPlayer mp) {
+			        mp.setLooping(true);
+			    }
+			});
+			
 		}else {
 			showHint("not implemented yet");
-		}
+		}		
 	}
 	
+	public void nextSlide(View view) {
+		slideNmbr++;
+		if (slideNmbr >= parkourb2data.size())
+			slideNmbr = parkourb2data.size() - 1;		
+		showSlide();		
+	}
+	
+	public void prevSlide(View view) {
+		slideNmbr--;
+		if (slideNmbr < 1)
+			slideNmbr = 1;
+		showSlide();
+	}
+
 	public void finisher(View view) {
 		addPoints();
 		finish();
