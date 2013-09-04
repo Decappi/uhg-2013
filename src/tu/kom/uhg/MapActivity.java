@@ -150,29 +150,25 @@ OnMarkerClickListener, android.location.LocationListener{
 				.title("quizquiz")
 		        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))));
 		
-		if (loc2.distanceTo(myLoc) <= ACTIVATION_DISTANCE){
-			removableMarkersList.add(
+		removableMarkersList.add(
 				map.addMarker(new MarkerOptions()
 		        .position(MARKER2)
 		        .title("quizquiz")
 		        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))));
-		}
-		if (loc3.distanceTo(myLoc) <= ACTIVATION_DISTANCE)
-			removableMarkersList.add(
+		
+		removableMarkersList.add(
 				map.addMarker(new MarkerOptions()
 		        .position(MARKER3)
 		        .title("quizquiz")
 		        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))));
 		
-		if (loc4.distanceTo(myLoc) <= ACTIVATION_DISTANCE)
-			removableMarkersList.add(
+		removableMarkersList.add(
 				map.addMarker(new MarkerOptions()
 		        .position(MARKER4)
 		        .title("quizquiz")
 		        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))));
-		
-		if (loc5.distanceTo(myLoc) <= ACTIVATION_DISTANCE)
-			removableMarkersList.add(
+
+		removableMarkersList.add(
 				map.addMarker(new MarkerOptions()
 		        .position(MARKER5)
 		        .title("quizquiz")
