@@ -7,7 +7,6 @@ import android.os.Bundle;
 
 import java.util.HashMap;
 import android.widget.ImageView;
-import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.VideoView;
 
